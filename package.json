@@ -15,16 +15,15 @@
     "@commitlint/config-conventional": "^19.2.2",
     "husky": "^8.0.0",
     "prettier": "^3.3.3"
-  },"scripts": {
-      "prepare": "husky install",
-      "commitlint": "commitlint --edit",
-      "format": "prettier --check **/*.{ts,tsx}",
-      "format:fix": "prettier --write **/*.{ts,tsx}",
-      "build": "pnpm --recursive run build",
-      "start": "pnpm --recursive run start",
-      "dev": "pnpm --recursive run dev",
-      "test": "jest"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "commitlint": "commitlint --edit",
+    "format": "prettier --check **/*.{ts,tsx}",
+    "format:fix": "prettier --write **/*.{ts,tsx}",
+    "build": "pnpm --recursive run build",
+    "start": "pnpm --recursive run start",
+    "dev": "pnpm --recursive run dev",
+    "test": "jest"
   }
 }
-
-

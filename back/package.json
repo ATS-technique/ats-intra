@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
+  "scripts": {
     "build": "tsc",
     "start": "node dist",
     "dev": "nodemon src/index.ts"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

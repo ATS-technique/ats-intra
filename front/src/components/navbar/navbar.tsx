@@ -1,7 +1,7 @@
 import logoHorizontal from "../../assets/Logos/horizontal-logo.png";
-import { ChevronFirst, ChevronLast } from "lucide-react";
+import { ChevronFirst, ChevronLast, User } from "lucide-react";
 import { createContext, useState } from "react";
-import userIcon from "../../assets/user-icon.png";
+import ToggleDarkModeButton from "./toggleDarkModeButton";
 
 interface NavbarContextType {
   expanded: boolean;
@@ -15,28 +15,49 @@ export const NavbarContext = createContext<NavbarContextType>({
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
   const [expanded, setExpanded] = useState(true);
+
   return (
     <aside className="h-screen">
-      <nav className="h-full flex flex-col bg-white border-r shadow-sm">
+      <nav className="h-full flex flex-col bg-white border-r dark:border-neutral-900 shadow-sm dark:bg-neutral-800">
         <div className="p-4 pb-2 flex justify-between items-center">
           <img src={logoHorizontal} className={`overflow-hidden transition-all ${expanded ? "w-32" : "w-0"}`} />
-          <button onClick={() => setExpanded((curr) => !curr)} className="p-1.5 rounded-lg bg-gray-50">
+          <button
+            onClick={() => setExpanded((curr) => !curr)}
+            className="p-1.5 rounded-lg bg-neutral-100 dark:bg-neutral-900 text-neutral-700 dark:text-neutral-400"
+          >
             {expanded ? <ChevronFirst /> : <ChevronLast />}
           </button>
         </div>
         <NavbarContext.Provider value={{ expanded, toggleExpanded: () => setExpanded((curr) => !curr) }}>
           <ul className="flex-1 px-3">{children}</ul>
         </NavbarContext.Provider>
+        <NavbarContext.Provider value={{ expanded, toggleExpanded: () => setExpanded((curr) => !curr) }}>
+          <ToggleDarkModeButton />
+        </NavbarContext.Provider>
 
-        <div className="border-t flex p-3">
-          <img src={userIcon} className="w-10 h-10" />
-          <div
-            className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"} `}
+        <div className="border-t dark:border-neutral-900 flex py-2 px-3">
+          <a
+            href=""
+            className="relative flex items-center py-2 px-3 my-1 font-medium rounded-md cursor-pointer transition-colors group hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-600 dark:text-neutral-400"
           >
-            <div className="leading-4">
-              <h4 className="font-semibold text-gray-700">Username</h4>
+            <div className="rounded-full bg-neutral-200 dark:bg-neutral-700 text-neutral-500 dark:text-neutral-400 p-1 border-2  border-neutral-400">
+              <User size={12} />
             </div>
-          </div>
+            <div
+              className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"} `}
+            >
+              <div className="leading-4">
+                <h4 className="font-semibold text-neutral-700 dark:text-neutral-400">Robin THOMAS</h4>
+              </div>
+            </div>
+            {!expanded && (
+              <div
+                className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-400 text-sm invisible opacity-20-translate-x-3 w-auto transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap`}
+              >
+                Robin THOMAS
+              </div>
+            )}
+          </a>
         </div>
       </nav>
     </aside>

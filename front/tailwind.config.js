@@ -4,6 +4,7 @@ export default {
     "./src/**/*.{html,js,ts,jsx,tsx}",
     // Ajoutez d'autres chemins si nécessaire
   ],
+  darkMode: "class",
   theme: {
     extend: {},
   },

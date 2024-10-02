@@ -7,9 +7,10 @@ interface UserAttributes {
   mail: string;
   password: string;
   is_active: boolean;
+  is_dark : boolean;
 }
 
-interface UserCreationAttributes extends Optional<UserAttributes, "id_user" | "is_active"> {}
+interface UserCreationAttributes extends Optional<UserAttributes, "id_user" | "is_active" | "is_dark"> {}
 
 class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id_user!: number;
@@ -17,6 +18,7 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public mail!: string;
   public password!: string;
   public is_active!: boolean;
+  public is_dark!: boolean;
 
   public readonly createdAt!: Date;
   public readonly updatedAt!: Date;
@@ -43,6 +45,10 @@ User.init(
       allowNull: false,
     },
     is_active: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+    is_dark: {
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },

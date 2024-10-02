@@ -22,20 +22,20 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     const { mail, password } = req.body;
     const user = await User.findOne({ where: { mail } });
     if (!user) {
-      res.status(404).json({ message: "Utilisateur inconue" });
+      res.status(400).json({ message: "Identifiants incorrects" });
       return;
-    } else if (user.is_active === false) {
-      res.status(400).json({ message: "Ce compte à été désactivé" });
-      return;
-    }
+    } 
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      res.status(400).json({ message: "Mot de passe incorrect" });
+      res.status(400).json({ message: "Identifiants incorrects" });
+      return;
+    }else if (user.is_active === false) {
+      res.status(400).json({ message: "Ce compte à été désactivé" });
       return;
     }
     const token = jwt.sign({ id: user.id_user }, process.env.JWT_SECRET as string, { expiresIn: "10h" });
-    res.status(200).json({ message: "Connexion réussie", token });
+    res.status(200).json({ message: "Connexion réussie", token, user });
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
@@ -88,7 +88,27 @@ export const deactivate = async (req: Request, res: Response): Promise<void> => 
 
     user.is_active = false;
     await user.save();
-    res.status(200).json({ message: "Le compte a été désactivé", user });
+    res.status(200).json({ message: "Le compte a été désactivé" });
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+export const upsateScreenMode = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id, screenMode } = req.body;
+    const user = await User.findByPk(id);
+    if (!user) {
+      res.status(404).json({ message: "Utilisateur inconnue" });
+      return;
+    } else if (user.is_active === false) {
+      res.status(400).json({ message: "Ce compte est désactivé" });
+      return;
+    }
+
+    user.is_dark = screenMode;
+    await user.save();
+    res.status(200).json({ message: "Affichage modifié"});
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
@@ -121,6 +141,28 @@ export const updatePassword = async (req: Request, res: Response): Promise<void>
   }
 };
 
+export const updatePasswordForce = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { passwordUpdated, id } = req.body;
+    const user = await User.findByPk(id);
+    if (!user) {
+      res.status(404).json({ message: "Utilisateur inconnue" });
+      return;
+    } else if (user.is_active === false) {
+      res.status(400).json({ message: "Ce compte à été désactivé, réactivez le pour le modifier" });
+      return;
+    }
+
+      user.password = await bcrypt.hash(passwordUpdated, 10);
+      await user.save();
+      res.status(200).json({ message: "Mot de passe mit à jour" });
+      return;
+    
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
 export const updateUser = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id, nameUpdated, mailUpdated } = req.body;
@@ -139,6 +181,15 @@ export const updateUser = async (req: Request, res: Response): Promise<void> => 
     await user.save();
     res.status(200).json({ message: "Informations mise à jour" });
     return;
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+export const getAllUsers = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const users = await User.findAll();
+    res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }

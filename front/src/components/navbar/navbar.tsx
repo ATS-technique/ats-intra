@@ -2,6 +2,9 @@ import logoHorizontal from "../../assets/Logos/horizontal-logo.png";
 import { ChevronFirst, ChevronLast, User } from "lucide-react";
 import { createContext, useState } from "react";
 import ToggleDarkModeButton from "./toggleDarkModeButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface NavbarContextType {
   expanded: boolean;
@@ -15,6 +18,8 @@ export const NavbarContext = createContext<NavbarContextType>({
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
   const [expanded, setExpanded] = useState(true);
+  const loggedUserName = localStorage.getItem('name');
+  const { logout } = useAuth();
 
   return (
     <aside className="h-screen">
@@ -46,15 +51,18 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
             <div
               className={`flex justify-between items-center overflow-hidden transition-all ${expanded ? "w-52 ml-3" : "w-0"} `}
             >
-              <div className="leading-4">
-                <h4 className="font-semibold text-neutral-700 dark:text-neutral-400">Robin THOMAS</h4>
+              <div className="leading-4 flex justify-between w-full">
+                <h4 className="font-semibold text-neutral-700 dark:text-neutral-400">{loggedUserName}</h4>
+                <div>
+                  <FontAwesomeIcon icon={faPowerOff} className="hover:text-neutral-800 dark:hover:text-neutral-200 dark:text-neutral-400" onClick={logout}/>
+                </div>
               </div>
             </div>
             {!expanded && (
               <div
                 className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-400 text-sm invisible opacity-20-translate-x-3 w-auto transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0 whitespace-nowrap`}
               >
-                Robin THOMAS
+                {loggedUserName}
               </div>
             )}
           </a>

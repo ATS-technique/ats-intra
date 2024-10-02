@@ -1,13 +1,13 @@
 const loginFields = [
   {
-    labelText: "Email address",
-    labelFor: "email-address",
-    id: "email-address",
-    name: "email",
-    type: "email",
-    autoComplete: "email",
+    labelText: "mail address",
+    labelFor: "mail",
+    id: "mail",
+    name: "mail",
+    type: "mail",
+    autoComplete: "mail",
     isRequired: true,
-    placeholder: "Email address",
+    placeholder: "Adresse E-mail",
   },
   {
     labelText: "Password",
@@ -17,8 +17,58 @@ const loginFields = [
     type: "password",
     autoComplete: "current-password",
     isRequired: true,
-    placeholder: "Password",
+    placeholder: "Mot de passe",
   },
 ];
 
 export { loginFields };
+
+const UpdateUserFields = [
+  {
+    labelText: "Adresse Mail",
+    labelFor: "mailUpdated",
+    id: "mailUpdated",
+    name: "mailUpdated",
+    type: "mail",
+    autoComplete: "",
+    isRequired: false,
+    placeholder: "Adresse E-mail",
+  },
+  {
+    labelText: "Nom",
+    labelFor: "nameUpdated",
+    id: "nameUpdated",
+    name: "nameUpdated",
+    type: "text",
+    autoComplete: "",
+    isRequired: false,
+    placeholder: "Prénom Nom",
+  },
+];
+
+export { UpdateUserFields };
+
+const UpdatePasswordForceFields = [
+  {
+    labelText: "Nouveau mot de passe",
+    labelFor: "newPassword",
+    id: "newPassword",
+    name: "newPassword",
+    type: "password",
+    autoComplete: "",
+    isRequired: true,
+    placeholder: "Mot de passe",
+  },
+  {
+    labelText: "Confirmez le mot de passe",
+    labelFor: "newPasswordConfirm",
+    id: "newPasswordConfirm",
+    name: "newPasswordConfirm",
+    type: "password",
+    autoComplete: "",
+    isRequired: true,
+    placeholder: "Mot de passe",
+  },
+];
+
+export { UpdatePasswordForceFields };

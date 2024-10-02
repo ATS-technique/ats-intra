@@ -12,7 +12,7 @@ interface InputProps {
 }
 
 const fixedInputClass =
-  "rounded-md appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm";
+  "rounded-md appearance-none relative block w-full px-3 dark:bg-neutral-900 py-2 border border-neutral-300 dark:border-neutral-500 placeholder-neutral-500 text-gray-900 dark:text-neutral-300 focus:outline-none focus:ring-orange-500 focus:border-orange-500 focus:z-10 sm:text-sm";
 
 export default function Input({
   handleChange,
@@ -28,7 +28,7 @@ export default function Input({
 }: InputProps) {
   return (
     <div className="my-5">
-      <label htmlFor={labelFor} className="sr-only">
+      <label htmlFor={labelFor} className="">
         {labelText}
       </label>
       <input

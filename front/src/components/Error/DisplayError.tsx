@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react';
-import { useAuth } from '../../contexts/AuthContext';
+import React, { useEffect } from "react";
+import { useAuth } from "../../contexts/AuthContext";
 
 interface DisplayErrorProps {
   errorMessage: string; // Texte à afficher
 }
-
-
 
 const DisplayError: React.FC<DisplayErrorProps> = ({ errorMessage }) => {
   const { logout } = useAuth();

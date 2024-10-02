@@ -24,13 +24,13 @@ export const login = async (req: Request, res: Response): Promise<void> => {
     if (!user) {
       res.status(400).json({ message: "Identifiants incorrects" });
       return;
-    } 
+    }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
       res.status(400).json({ message: "Identifiants incorrects" });
       return;
-    }else if (user.is_active === false) {
+    } else if (user.is_active === false) {
       res.status(400).json({ message: "Ce compte à été désactivé" });
       return;
     }
@@ -108,7 +108,7 @@ export const upsateScreenMode = async (req: Request, res: Response): Promise<voi
 
     user.is_dark = screenMode;
     await user.save();
-    res.status(200).json({ message: "Affichage modifié"});
+    res.status(200).json({ message: "Affichage modifié" });
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }
@@ -153,11 +153,10 @@ export const updatePasswordForce = async (req: Request, res: Response): Promise<
       return;
     }
 
-      user.password = await bcrypt.hash(passwordUpdated, 10);
-      await user.save();
-      res.status(200).json({ message: "Mot de passe mit à jour" });
-      return;
-    
+    user.password = await bcrypt.hash(passwordUpdated, 10);
+    await user.save();
+    res.status(200).json({ message: "Mot de passe mit à jour" });
+    return;
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
   }

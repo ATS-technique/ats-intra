@@ -7,7 +7,7 @@ interface UserAttributes {
   mail: string;
   password: string;
   is_active: boolean;
-  is_dark : boolean;
+  is_dark: boolean;
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id_user" | "is_active" | "is_dark"> {}

@@ -3,7 +3,7 @@ import { loginFields } from "../../constants/formFields";
 import Input from "../inputs/input";
 import FormAction from "../inputs/FormAction";
 import pathAPI from "../../pathAPI";
-import { useAuth } from '../../contexts/AuthContext';
+import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const fields = loginFields;
@@ -60,7 +60,7 @@ export default function LoginComponent({ handleError }: LoginComponentProps) {
       if (error instanceof Error) {
         handleError(true, error.message);
       } else {
-        handleError(true, 'Une  erreure incononue s est produite');
+        handleError(true, "Une  erreure incononue s est produite");
       }
     }
   };
@@ -84,7 +84,7 @@ export default function LoginComponent({ handleError }: LoginComponentProps) {
             />
           ))}
         </div>
-        <FormAction handleSubmit={handleSubmit} text="Login" isDisabled={false}/>
+        <FormAction handleSubmit={handleSubmit} text="Login" isDisabled={false} />
       </form>
     </div>
   );

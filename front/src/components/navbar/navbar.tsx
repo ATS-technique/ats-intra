@@ -18,7 +18,7 @@ export const NavbarContext = createContext<NavbarContextType>({
 
 const Navbar = ({ children }: { children: React.ReactNode }) => {
   const [expanded, setExpanded] = useState(true);
-  const loggedUserName = localStorage.getItem('name');
+  const loggedUserName = localStorage.getItem("name");
   const { logout } = useAuth();
 
   return (
@@ -54,7 +54,11 @@ const Navbar = ({ children }: { children: React.ReactNode }) => {
               <div className="leading-4 flex justify-between w-full">
                 <h4 className="font-semibold text-neutral-700 dark:text-neutral-400">{loggedUserName}</h4>
                 <div>
-                  <FontAwesomeIcon icon={faPowerOff} className="hover:text-neutral-800 dark:hover:text-neutral-200 dark:text-neutral-400" onClick={logout}/>
+                  <FontAwesomeIcon
+                    icon={faPowerOff}
+                    className="hover:text-neutral-800 dark:hover:text-neutral-200 dark:text-neutral-400"
+                    onClick={logout}
+                  />
                 </div>
               </div>
             </div>

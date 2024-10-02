@@ -1,13 +1,13 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import MyPaths from './MyPaths';
-import Layout from './layouts/layout';
-import Accueil from './pages/Accueil';
-import Login from './pages/Login';
-import Admin from './pages/Admin';
-import PrivateRoute from './components/PrivateRoute';
-import { AuthProvider } from './contexts/AuthContext';
-import PlanningAtelier from './pages/PlanningAtelier';
-import PlanningPose from './pages/PlanningPose';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import MyPaths from "./MyPaths";
+import Layout from "./layouts/layout";
+import Accueil from "./pages/Accueil";
+import Login from "./pages/Login";
+import Admin from "./pages/Admin";
+import PrivateRoute from "./components/PrivateRoute";
+import { AuthProvider } from "./contexts/AuthContext";
+import PlanningAtelier from "./pages/PlanningAtelier";
+import PlanningPose from "./pages/PlanningPose";
 
 const router = createBrowserRouter([
   {

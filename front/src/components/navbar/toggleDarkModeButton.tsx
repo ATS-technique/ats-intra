@@ -5,14 +5,13 @@ import { FetchAPI } from "../methods/fetch";
 import { updateScreenMode } from "../../constants/fetchMethods";
 
 function ToggleDarkModeButton() {
-  const screenMode = localStorage.getItem('screenMode');
+  const screenMode = localStorage.getItem("screenMode");
   const isDark = screenMode === "dark" ? true : false;
   const loggedUser = localStorage.getItem("loggedUser");
 
-
   const [dark, setDark] = useState(!isDark);
 
-  if(isDark){
+  if (isDark) {
     document.body.classList.add("dark");
   }
 
@@ -20,17 +19,14 @@ function ToggleDarkModeButton() {
     setDark(!dark);
     document.body.classList.toggle("dark");
     localStorage.setItem("screenMode", dark ? "dark" : "light");
-    
-    updateDarkMode();
 
+    updateDarkMode();
   };
 
   async function updateDarkMode(): Promise<void> {
-    
-        updateScreenMode.body.id = Number(loggedUser);
-        updateScreenMode.body.screenMode = JSON.stringify(dark);
-        await FetchAPI(updateScreenMode) as { message: string }[];    
-    
+    updateScreenMode.body.id = Number(loggedUser);
+    updateScreenMode.body.screenMode = JSON.stringify(dark);
+    (await FetchAPI(updateScreenMode)) as { message: string }[];
   }
 
   const { expanded }: { expanded: boolean } = useContext(NavbarContext);
@@ -54,7 +50,7 @@ function ToggleDarkModeButton() {
           <div
             className={`absolute left-full rounded-md px-2 py-1 ml-6 bg-neutral-100 dark:bg-neutral-900 text-neutral-800 dark:text-neutral-400 text-sm invisible opacity-20-translate-x-3 transition-all group-hover:visible group-hover:opacity-100 group-hover:translate-x-0  whitespace-nowrap`}
           >
-            <span>{dark ?"Mode Sombre" : "Mode Clair"}</span>
+            <span>{dark ? "Mode Sombre" : "Mode Clair"}</span>
           </div>
         )}
       </div>

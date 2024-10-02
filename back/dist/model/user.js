@@ -30,6 +30,10 @@ User.init({
         type: sequelize_1.DataTypes.BOOLEAN,
         defaultValue: true,
     },
+    is_dark: {
+        type: sequelize_1.DataTypes.BOOLEAN,
+        defaultValue: true,
+    },
 }, {
     sequelize: db_1.default,
     tableName: "users",

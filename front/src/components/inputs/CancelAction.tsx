@@ -1,7 +1,7 @@
 import React from "react";
 
 interface CancelActionProps {
-    handleClose: (event: React.FormEvent<HTMLButtonElement>) => void;
+  handleClose: (event: React.FormEvent<HTMLButtonElement>) => void;
   type?: "Button"; // Assuming 'Button' is the only type for now, but this can be expanded
   action?: "submit" | "reset" | "button"; // HTML button types
   text: string;

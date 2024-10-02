@@ -8,7 +8,13 @@ interface FormActionProps {
   isDisabled: boolean;
 }
 
-export default function FormAction({ handleSubmit, type = "Button", action = "submit", text, isDisabled = false }: FormActionProps) {
+export default function FormAction({
+  handleSubmit,
+  type = "Button",
+  action = "submit",
+  text,
+  isDisabled = false,
+}: FormActionProps) {
   return (
     <>
       {type === "Button" ? (

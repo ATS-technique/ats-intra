@@ -10,5 +10,9 @@ const sequelize = new sequelize_1.Sequelize(process.env.DB_NAME, process.env.DB_
     host: process.env.DB_HOST,
     dialect: "mysql",
     port: parseInt(process.env.DB_PORT || "8889", 10),
+    define: {
+        timestamps: true,
+        underscored: true,
+    }
 });
 exports.default = sequelize;

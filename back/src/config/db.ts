@@ -11,7 +11,12 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     dialect: "mysql",
     port: parseInt(process.env.DB_PORT || "8889", 10),
+    define: {
+      timestamps: true,
+      underscored: true,
+    }
   },
+
 );
 
 export default sequelize;

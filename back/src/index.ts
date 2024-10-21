@@ -2,6 +2,9 @@ import express from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import userRoutes from "./routes/userRoutes";
+import clientRoutes from "./routes/clientRoutes";
+import orderRoutes from "./routes/orderRoutes";
+import productRoutes from "./routes/productRoutes";
 import sequelize from "./config/db";
 
 const app = express();
@@ -16,6 +19,9 @@ app.use(
 app.use(bodyParser.json());
 
 app.use("/api/users", userRoutes);
+app.use("/api/clients", clientRoutes);
+app.use("/api/orders", orderRoutes);
+app.use("/api/products", productRoutes);
 
 sequelize
   .sync()

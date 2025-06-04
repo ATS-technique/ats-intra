@@ -6,8 +6,15 @@ import { useState, useEffect } from "react";
 
 export default function Admin() {
   const [users, setUsers] = useState<
-    { id_user: number; name: string; mail: string; createdAt: string; is_active: boolean }[]
+    {
+      id_user: number;
+      name: string;
+      mail: string;
+      createdAt: string;
+      is_active: boolean;
+    }[]
   >([]);
+
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 

@@ -54,6 +54,18 @@ export const getProfile = async (req: Request, res: Response): Promise<void> => 
   }
 };
 
+export const getUserName = async (id_user: number): Promise<User> => {
+  try {
+    const user = await User.findByPk(id_user);
+    if (!user) {
+      throw new Error("Client inconnue");
+    }
+    return user;
+  } catch (error) {
+    throw new Error((error as Error).message);
+  }
+};
+
 export const activate = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.body;

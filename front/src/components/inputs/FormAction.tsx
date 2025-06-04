@@ -20,7 +20,7 @@ export default function FormAction({
       {type === "Button" ? (
         <button
           type={action}
-          className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mt-10"
+          className={`m-2 group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white ${isDisabled ? "bg-neutral-400 cursor-not-allowed" : "bg-orange-600 hover:bg-orange-700"}  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 mt-10"`}
           onClick={handleSubmit} // Changed from onSubmit to onClick
           disabled={isDisabled} // Use the 'disabled' attribute instead of 'isDisabled'
         >

@@ -6,12 +6,11 @@ interface ProductAttributes {
   name: string;
 }
 
-
 class ProductStatus extends Model<ProductAttributes> implements ProductAttributes {
   public id_product_status!: number;
   public name!: string;
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+  public readonly created_at!: Date;
+  public readonly updated_at!: Date;
 }
 
 ProductStatus.init(
@@ -25,7 +24,6 @@ ProductStatus.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-   
   },
   {
     sequelize,

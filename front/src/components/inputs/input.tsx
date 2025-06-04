@@ -9,6 +9,7 @@ interface InputProps {
   isRequired?: boolean;
   placeholder?: string;
   customClass?: string;
+  customInputClass?: string;
 }
 
 const fixedInputClass =
@@ -25,9 +26,10 @@ export default function Input({
   isRequired = false,
   placeholder,
   customClass = "",
+  customInputClass = "",
 }: InputProps) {
   return (
-    <div className="my-5">
+    <div className={`my-5 ${customClass}`}>
       <label htmlFor={labelFor} className="">
         {labelText}
       </label>
@@ -38,7 +40,7 @@ export default function Input({
         name={name}
         type={type}
         required={isRequired}
-        className={`${fixedInputClass} ${customClass}`}
+        className={`${fixedInputClass} ${customInputClass}`}
         placeholder={placeholder}
       />
     </div>

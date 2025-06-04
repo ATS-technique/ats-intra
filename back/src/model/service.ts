@@ -1,13 +1,12 @@
-
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
 
 interface ServiceAttributes {
-    id_service: number;
-    id_service_type: number;
-    name: string; 
-    unit_cost: number;
-    unit: string;
+  id_service: number;
+  id_service_type: number;
+  name: string;
+  unit_cost: number;
+  unit: string;
 }
 
 interface ServiceCreationAttributes extends Optional<ServiceAttributes, "id_service"> {}
@@ -18,8 +17,8 @@ class Service extends Model<ServiceAttributes, ServiceCreationAttributes> implem
   public name!: string;
   public unit_cost!: number;
   public unit!: string;
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+  public readonly created_at!: Date;
+  public readonly updated_at!: Date;
 }
 
 Service.init(

@@ -4,7 +4,7 @@ import sequelize from "../config/db";
 interface ProductAttributes {
   id_product: number;
   id_order: number;
-  designation: string; 
+  designation: string;
   quantity: number;
   id_status: string;
   unit: string;
@@ -19,8 +19,8 @@ class Product extends Model<ProductAttributes, ProductCreationAttributes> implem
   public quantity!: number;
   public id_status!: string;
   public unit!: string;
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+  public readonly created_at!: Date;
+  public readonly updated_at!: Date;
 }
 
 Product.init(

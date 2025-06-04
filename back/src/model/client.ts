@@ -1,5 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
+import { StringifyOptions } from "querystring";
 
 interface ClientAttributes {
   id_client: number;
@@ -10,23 +11,23 @@ interface ClientAttributes {
   address: string;
   post_code: number;
   city: string;
-  siren: number
+  siren: string;
 }
 
 interface ClientCreationAttributes extends Optional<ClientAttributes, "id_client" | "siren"> {}
 
 class Client extends Model<ClientAttributes, ClientCreationAttributes> implements ClientAttributes {
-    public id_client!: number;
-    public name!: string;
-    public pro!: boolean;
-    public tel!: string;
-    public mail!: number;
-    public address!: string;
-    public post_code!: number;
-    public city!: string;
-    public siren!: number
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+  public id_client!: number;
+  public name!: string;
+  public pro!: boolean;
+  public tel!: string;
+  public mail!: number;
+  public address!: string;
+  public post_code!: number;
+  public city!: string;
+  public siren!: string;
+  public readonly created_at!: Date;
+  public readonly updated_at!: Date;
 }
 
 Client.init(
@@ -61,13 +62,13 @@ Client.init(
       allowNull: true,
     },
     city: {
-        type: DataTypes.STRING,
-        allowNull: true,
-      },
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
     siren: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-      },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,

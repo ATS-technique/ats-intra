@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const worshopPlanningController_1 = require("../controller/worshopPlanningController");
+const router = (0, express_1.Router)();
+router.post("/add", worshopPlanningController_1.add);
+router.get("/getAll", worshopPlanningController_1.getAll);
+router.post("/setAchieved", worshopPlanningController_1.setAchieved);
+router.post("/editPriority", worshopPlanningController_1.editPriority);
+exports.default = router;

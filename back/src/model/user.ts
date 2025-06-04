@@ -19,9 +19,8 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public password!: string;
   public is_active!: boolean;
   public is_dark!: boolean;
-
-  public readonly createdAt!: Date;
-  public readonly updatedAt!: Date;
+  public readonly created_at!: Date;
+  public readonly updated_at!: Date;
 }
 
 User.init(

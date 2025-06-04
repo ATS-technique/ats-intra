@@ -1,4 +1,3 @@
-
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
 
@@ -7,21 +6,22 @@ interface ContactAttributes {
   id_client: number;
   name: string;
   mail: string;
-  landline: number;
-  mobile: number;
+  landline: string;
+  mobile: string;
 }
 
-interface DepositCreationAttributes extends Optional<ContactAttributes, "id_contact" | "mail" | "landline" | "mobile" > {}
+interface DepositCreationAttributes
+  extends Optional<ContactAttributes, "id_contact" | "mail" | "landline" | "mobile"> {}
 
 class Contact extends Model<ContactAttributes, DepositCreationAttributes> implements ContactAttributes {
-    public id_contact!: number;
-    public id_client!: number;
-    public name!: string;
-    public mail!: string;
-    public landline!: number;
-    public mobile!: number;
-    public readonly createdAt!: Date;
-    public readonly updatedAt!: Date;
+  public id_contact!: number;
+  public id_client!: number;
+  public name!: string;
+  public mail!: string;
+  public landline!: string;
+  public mobile!: string;
+  public readonly created_at!: Date;
+  public readonly updated_at!: Date;
 }
 
 Contact.init(
@@ -40,16 +40,16 @@ Contact.init(
       allowNull: false,
     },
     mail: {
-        type: DataTypes.STRING,
-        allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     landline: {
-        type: DataTypes.NUMBER,
-        allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
     mobile: {
-        type: DataTypes.NUMBER,
-        allowNull: true,
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

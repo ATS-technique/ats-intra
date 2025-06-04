@@ -38,6 +38,8 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             res.status(400).json({ message: "Identifiants incorrects" });
             return;
         }
+        console.log("User Password: ", user.password);
+        console.log("Provided Password: ", password);
         const isMatch = yield bcrypt_1.default.compare(password, user.password);
         if (!isMatch) {
             res.status(400).json({ message: "Identifiants incorrects" });

@@ -7,7 +7,7 @@ dotenv.config();
 export const add = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id_product, id_service, quantity } = req.body;
-    const serviceLine = await ServiceLine.create({ id_product, id_service, quantity  });
+    const serviceLine = await ServiceLine.create({ id_product, id_service, quantity });
     res.status(201).json({ message: "Commande ajoutée", serviceLine });
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });

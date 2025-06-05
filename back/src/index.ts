@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:4000",
   "https://ats-serrurerie.com",
-  "http://ats-mettalerie-serrurerie.com"
+  "http://ats-mettalerie-serrurerie.com",
 ];
 
 app.use(
@@ -28,8 +28,8 @@ app.use(
         callback(new Error("Not allowed by CORS"));
       }
     },
-    credentials: true, 
-  })
+    credentials: true,
+  }),
 );
 
 app.use(bodyParser.json());

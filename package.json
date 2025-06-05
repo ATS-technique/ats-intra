@@ -20,6 +20,6 @@
     "format:fix": "prettier --write **/*.{ts,tsx}",
     "build": "pnpm --recursive run build",
     "start": "pnpm --recursive run start",
-    "dev": "pnpm --recursive run dev"
+    "dev": "pnpm --recursive run dev" 
   }
 }

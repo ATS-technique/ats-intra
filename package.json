@@ -1,16 +1,12 @@
 {
   "name": "ats-intra",
   "version": "1.0.0",
+  "private": true,
   "packageManager": "pnpm@8.15.4",
-  "description": "",
-  "main": "index.js",
   "workspaces": [
-    "back/*",
-    "front/*"
+    "front",
+    "back"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
@@ -22,9 +18,7 @@
     "commitlint": "commitlint --edit",
     "format": "prettier --check **/*.{ts,tsx}",
     "format:fix": "prettier --write **/*.{ts,tsx}",
-    "build": "pnpm --recursive run build",
-    "start": "pnpm --recursive run start",
-    "dev": "pnpm --recursive run dev",
-    "test": "jest"
+    "build": "pnpm --filter front... run build",
+    "dev": "pnpm --filter front... run dev"
   }
 }

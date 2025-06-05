@@ -2,7 +2,7 @@ import { Column } from "../components/Table/types";
 import { X, Eye } from "lucide-react";
 import { OrderType, ClientType } from "../constants/types";
 import { Check } from "lucide-react";
-import { handleOrderValidation, handleOrderBilled, handleOrderPayed } from "../functiuns/order";
+import { handleOrderValidation, handleOrderPayed } from "../functiuns/order";
 
 export const clientColumns: Column<ClientType>[] = [
   {

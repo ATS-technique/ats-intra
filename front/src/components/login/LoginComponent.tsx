@@ -38,7 +38,7 @@ export default function LoginComponent({ handleError }: LoginComponentProps) {
         },
         body: JSON.stringify(loginState),
       });
-
+      console.log(pathAPI.LOGIN);
       const status = response.status;
       const data = await response.json();
       console.log(data);

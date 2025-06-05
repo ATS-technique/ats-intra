@@ -1,4 +1,4 @@
-import Header from "../components/login/header";
+import Header from "../components/login/Header";
 import LoginComponent from "../components/login/LoginComponent";
 import { useState, useEffect } from "react";
 import DisplayError from "../components/Error/DisplayError";

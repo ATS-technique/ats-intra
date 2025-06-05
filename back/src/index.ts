@@ -13,18 +13,23 @@ import sequelize from "./config/db";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:4000";
+const allowedOrigins = [
+  process.env.FRONTEND_URL || "http://localhost:4000",
+  "https://ats-serrurerie.com",
+  "http://ats-mettalerie-serrurerie.com"
+];
 
 app.use(
   cors({
-    origin: FRONTEND_URL,
-  }),
-  cors({
-    origin: "https://ats-serrurerie.com",
-  }),
-  cors({
-    origin: "http://ats-mettalerie-serrurerie.com",
-  }),
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true, 
+  })
 );
 
 app.use(bodyParser.json());

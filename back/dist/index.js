@@ -17,13 +17,21 @@ const tagRoutes_1 = __importDefault(require("./routes/tagRoutes"));
 const db_1 = __importDefault(require("./config/db"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
-const FRONTEND_URL = process.env.FRONTEND_URL || "http://localhost:4000";
+const allowedOrigins = [
+    process.env.FRONTEND_URL || "http://localhost:4000",
+    "https://ats-serrurerie.com",
+    "http://ats-mettalerie-serrurerie.com"
+];
 app.use((0, cors_1.default)({
-    origin: FRONTEND_URL,
-}), (0, cors_1.default)({
-    origin: "https://ats-serrurerie.com",
-}), (0, cors_1.default)({
-    origin: "http://ats-mettalerie-serrurerie.com",
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        }
+        else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
+    credentials: true,
 }));
 app.use(body_parser_1.default.json());
 app.use("/api/users", userRoutes_1.default);

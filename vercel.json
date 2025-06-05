@@ -7,6 +7,5 @@
     }
   ],
   "installCommand": "cd front && pnpm install",
-  "buildCommand": "cd front && pnpm run build",
-  "outputDirectory": "front/dist"
+  "buildCommand": "cd front && pnpm run build"
 }

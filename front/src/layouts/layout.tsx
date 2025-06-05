@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 import { useLocation } from "react-router-dom";
-import Navbar from "../components/navbar/Navbar";
+import Navbar from "../components/navbar/navbar";
 import NavbarItem from "../components/navbar/NavbarItem";
 import { Home, Calendar, UserPen, Globe, ClipboardList, Lock } from "lucide-react";
 import MyPaths from "../MyPaths";

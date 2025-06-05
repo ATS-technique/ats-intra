@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3000;
 const allowedOrigins = [
     process.env.FRONTEND_URL || "http://localhost:4000",
     "https://ats-serrurerie.com",
-    "http://ats-mettalerie-serrurerie.com"
+    "http://ats-mettalerie-serrurerie.com",
 ];
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {

@@ -1,7 +1,7 @@
 import logoHorizontal from "../../assets/Logos/horizontal-logo.png";
 import { ChevronFirst, ChevronLast, User } from "lucide-react";
 import { createContext, useState } from "react";
-import ToggleDarkModeButton from "./ToggleDarkModeButton";
+import ToggleDarkModeButton from "./toggleDarkModeButton";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { useAuth } from "../../contexts/AuthContext";

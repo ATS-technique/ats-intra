@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavbarContext } from "./Navbar";
+import { NavbarContext } from "./navbar";
 
 interface NavbarItemProps {
   icon: React.ReactNode; // Peut être n'importe quel élément React, y compris les icônes de FontAwesome

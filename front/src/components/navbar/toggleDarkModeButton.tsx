@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Sun, Moon } from "lucide-react";
-import { NavbarContext } from "./Navbar";
+import { NavbarContext } from "./navbar";
 import { FetchAPI } from "../methods/fetch";
 import { updateScreenMode } from "../../constants/fetchMethods";
 

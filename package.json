@@ -14,7 +14,7 @@
     "prettier": "^3.3.3"
   },
   "scripts": {
-    "prepare": "husky install",
+    "prepare": "test -n \"$CI\" || husky install",
     "commitlint": "commitlint --edit",
     "format": "prettier --check **/*.{ts,tsx}",
     "format:fix": "prettier --write **/*.{ts,tsx}",

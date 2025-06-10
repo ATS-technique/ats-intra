@@ -8,8 +8,8 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|favicon\\.ico|robots\\.txt|manifest\\.json).*)",
-      "destination": "/front/index.html"
+      "source": "/((?!assets|.*\\.js|.*\\.css|.*\\.png|.*\\.ico|.*\\.svg|.*\\.webp|.*\\.txt).*)",
+      "destination": "/index.html"
     }
   ]
 }

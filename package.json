@@ -18,7 +18,6 @@
     "commitlint": "commitlint --edit",
     "format": "prettier --check **/*.{ts,tsx}",
     "format:fix": "prettier --write **/*.{ts,tsx}",
-    "build": "pnpm --filter front... run build",
-    "dev": "pnpm --filter front... run dev"
+    "dev": "pnpm --recursive run dev"
   }
 }

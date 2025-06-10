@@ -5,6 +5,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
   // https://vitejs.dev/config/
   return {
+    base: "/",
     plugins: [react()],
     server: {
       historyApiFallback: true,

@@ -7,10 +7,12 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     server: {
+      historyApiFallback: true,
       port: env.VITE_PORT ? Number(env.VITE_PORT) : 4000,
     },
     build: {
       outDir: "../dist",
+      emptyOutDir: true,
     },
   };
 });

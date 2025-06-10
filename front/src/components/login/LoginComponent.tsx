@@ -31,6 +31,7 @@ export default function LoginComponent({ handleError }: LoginComponentProps) {
 
   const authenticateUser = async () => {
     try {
+      console.log(pathAPI.LOGIN);
       const response = await fetch(pathAPI.LOGIN, {
         method: "POST",
         headers: {

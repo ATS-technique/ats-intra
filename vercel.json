@@ -9,7 +9,7 @@
   "rewrites": [
     {
       "source": "/((?!assets|.*\\.js|.*\\.css|.*\\.png|.*\\.ico|.*\\.svg|.*\\.webp|.*\\.txt).*)",
-      "destination": "/index.html"
+      "destination": "/front/index.html"
     }
   ]
 }

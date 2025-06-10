@@ -3,13 +3,13 @@
     {
       "src": "front/package.json",
       "use": "@vercel/static-build",
-      "config": { "distDir": "front/dist" }
+      "config": { "distDir": "/dist" }
     }
   ],
   "rewrites": [
     {
       "source": "/((?!assets|.*\\.js|.*\\.css|.*\\.png|.*\\.ico|.*\\.svg|.*\\.webp|.*\\.txt).*)",
-      "destination": "/front/index.html"
+      "destination": "/front/dist/index.html"
     }
   ]
 }

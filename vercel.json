@@ -1,0 +1,14 @@
+{
+  "builds": [
+    {
+      "src": "front/index.html",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "front/dist"
+      }
+    }
+  ],
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

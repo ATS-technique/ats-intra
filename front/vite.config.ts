@@ -11,7 +11,7 @@ export default defineConfig(({ mode }) => {
       port: env.VITE_PORT ? Number(env.VITE_PORT) : 4000,
     },
     build: {
-      outDir: "../dist",
+      outDir: "dist",
       emptyOutDir: true,
     },
   };

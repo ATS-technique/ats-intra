@@ -5,5 +5,11 @@
       "use": "@vercel/static-build",
       "config": { "distDir": "front/dist" }
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!assets|favicon\\.ico|robots\\.txt|manifest\\.json).*)",
+      "destination": "/front/index.html"
+    }
   ]
 }

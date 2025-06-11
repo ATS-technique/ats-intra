@@ -20,6 +20,9 @@ importers:
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      vite:
+        specifier: ^5.3.4
+        version: 5.3.4(@types/node@20.14.10)
 
   back:
     dependencies:

@@ -9,6 +9,7 @@ import workshopPlanningRoutes from "./routes/workshopPlanningRoutes";
 import contactRoutes from "./routes/contactRoutes";
 import articleRoutes from "./routes/articleRoutes";
 import tagRoutes from "./routes/tagRoutes";
+import pressMentionRoutes from "./routes/pressMentionRoutes";
 import sequelize from "./config/db";
 
 const app = express();
@@ -42,6 +43,7 @@ app.use("/api/workshopPlanning", workshopPlanningRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/contacts", contactRoutes);
 app.use("/api/tags", tagRoutes);
+app.use("/api/pressMentions", pressMentionRoutes);
 sequelize
   .sync()
   .then(() => {

@@ -8,15 +8,21 @@ dotenv.config();
 export const add = async (req: Request, res: Response): Promise<void> => {
   try {
     if (!req.file) throw new Error("Aucun fichier reçu");
-    const { article_name, media_name, article_url, link_text, image_path } = req.body;
-    
+    const { article_name, media_name, article_url, description, date, link_text, image_path } = req.body;
+
     const folderPath = `pressMentions/${article_name}`;
 
     // Upload Cloudinary
     const image = await uploadImage(req.file, folderPath);
 
     // Création de l'article avec l'URL Cloudinary
-    const newObject = await PressMention.create({ article_name, media_name, article_url, link_text, image_path: image })
+    const newObject = await PressMention.create({
+      article_name,
+      media_name,
+      article_url,
+      link_text,
+      image_path: image,
+    });
 
     const pressMention = newObject.dataValues;
 
@@ -52,7 +58,8 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
 
 export const editPressMention = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { id_press_mention, media_name, article_name, article_url, link_text, image_path } = req.body;
+    const { id_press_mention, media_name, article_name, article_url, description, date, link_text, image_path } =
+      req.body;
     const pressMention = await PressMention.findByPk(id_press_mention);
 
     if (!pressMention) {
@@ -64,6 +71,8 @@ export const editPressMention = async (req: Request, res: Response): Promise<voi
       pressMention.article_url = article_url;
       pressMention.link_text = link_text;
       pressMention.image_path = image_path;
+      pressMention.date = date;
+      pressMention.description = description;
 
       await pressMention.save();
       res.status(200).json({ message: "Article modifié", pressMention });
@@ -72,4 +81,3 @@ export const editPressMention = async (req: Request, res: Response): Promise<voi
     res.status(500).json({ error: (error as Error).message });
   }
 };
-

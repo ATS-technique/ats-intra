@@ -8,7 +8,10 @@ interface ArticlesTagsAttributes {
 
 interface ArticleTagsCreationAttributes {}
 
-class ArticleTags extends Model<ArticlesTagsAttributes, ArticleTagsCreationAttributes> implements ArticlesTagsAttributes {
+class ArticleTags
+  extends Model<ArticlesTagsAttributes, ArticleTagsCreationAttributes>
+  implements ArticlesTagsAttributes
+{
   public id_article!: number;
   public id_tag!: number;
   public name!: string;

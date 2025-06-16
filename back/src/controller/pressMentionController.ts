@@ -52,9 +52,9 @@ export const getpressMention = async (req: Request, res: Response): Promise<void
 export const getAll = async (req: Request, res: Response): Promise<void> => {
   try {
     const pressMentions = await PressMention.findAll({
-      order: [["createdAt", "DESC"]],
+      order: [["created_at", "DESC"]],
     }); 
-    console.log("✅ Articles récupérés avec succès");
+        console.log("✅ Articles récupérés avec succès");
     res.status(200).json(pressMentions);
   } catch (error) {
     console.log("❌ Erreur lors de la récupération des articles :", error);

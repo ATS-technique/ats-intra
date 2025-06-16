@@ -38,7 +38,6 @@ PressMention.init(
       primaryKey: true,
       type: DataTypes.INTEGER,
       autoIncrement: true,
-      allowNull: false,
     },
     media_name: {
       type: DataTypes.STRING,
@@ -65,7 +64,7 @@ PressMention.init(
       allowNull: false,
     },
     image_path: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
   },

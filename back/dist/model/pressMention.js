@@ -9,8 +9,9 @@ class PressMention extends sequelize_1.Model {
 }
 PressMention.init({
     id_press_mention: {
+        primaryKey: true,
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
+        autoIncrement: true,
     },
     media_name: {
         type: sequelize_1.DataTypes.STRING,
@@ -37,7 +38,7 @@ PressMention.init({
         allowNull: false,
     },
     image_path: {
-        type: sequelize_1.DataTypes.INTEGER,
+        type: sequelize_1.DataTypes.STRING,
         allowNull: false,
     },
 }, {

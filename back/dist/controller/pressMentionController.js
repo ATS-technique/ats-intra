@@ -21,7 +21,7 @@ const add = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.file)
             throw new Error("Aucun fichier reçu");
-        const { article_name, media_name, article_url, description, date, link_text, image_path } = req.body;
+        const { article_name, media_name, article_url, description, date, link_text } = req.body;
         const folderPath = `pressMentions/${article_name}`;
         // Upload Cloudinary
         const image = yield (0, imageMangement_1.default)(req.file, folderPath);
@@ -31,6 +31,8 @@ const add = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
             media_name,
             article_url,
             link_text,
+            description,
+            date,
             image_path: image,
         });
         const pressMention = newObject.dataValues;
@@ -59,11 +61,15 @@ const getpressMention = (req, res) => __awaiter(void 0, void 0, void 0, function
 exports.getpressMention = getpressMention;
 const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const pressMentions = yield pressMention_1.default.findAll();
+        const pressMentions = yield pressMention_1.default.findAll({
+            order: [["created_at", "DESC"]],
+        });
+        console.log("✅ Articles récupérés avec succès");
         res.status(200).json(pressMentions);
     }
     catch (error) {
-        res.status(500).json({ error: error.message });
+        console.log("❌ Erreur lors de la récupération des articles :", error);
+        res.status(500).json({ message: error instanceof Error ? error.message : "Erreur serveur" });
     }
 });
 exports.getAll = getAll;

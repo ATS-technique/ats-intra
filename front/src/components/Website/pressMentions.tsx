@@ -31,12 +31,12 @@ export default function PressMentions({ setIsError, setErrorMessage }: PressMent
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [pressMentionFormState, setFormState] = useState({
-    media_name: "Art Deco 80",
-    article_name: "Clair de Jour",
-    article_url: "ats-serrurerie.com",
-    description: "Fournisseur de serrurerie et métallerie",
-    date: "Mai 2025",
-    link_text: "Clique ici pour en savoir plus",
+    media_name: "",
+    article_name: "",
+    article_url: "",
+    description: "",
+    date: "",
+    link_text: "",
   });
 
   const pressMentionsColumns: Column<PressMention>[] = [

@@ -90,7 +90,11 @@ export default function PressMentions({ setIsError, setErrorMessage }: PressMent
       setPressMentions(dateTimeFormatting(pressMentionsJson) as PressMention[]);
     } catch (error) {
       setIsError(true);
-      setErrorMessage(error instanceof Error ? error.message : "Une erreur inconnue s'est produite.");
+      if (error instanceof Error) {
+        setErrorMessage(error.message);
+      } else {
+        setErrorMessage("An unknown error occurred");
+      }
     }
   }, [setIsError, setErrorMessage]);
 

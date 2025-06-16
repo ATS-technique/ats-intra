@@ -57,7 +57,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
     res.status(200).json(pressMentions);
   } catch (error) {
     console.log("❌ Erreur lors de la récupération des articles :", error);
-    res.status(500).json({ error: (error as Error).message });
+    res.status(500).json({ message: error instanceof Error ? error.message : "Erreur serveur" });
   }
 };
 

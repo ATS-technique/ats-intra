@@ -14,6 +14,7 @@ const workshopPlanningRoutes_1 = __importDefault(require("./routes/workshopPlann
 const contactRoutes_1 = __importDefault(require("./routes/contactRoutes"));
 const articleRoutes_1 = __importDefault(require("./routes/articleRoutes"));
 const tagRoutes_1 = __importDefault(require("./routes/tagRoutes"));
+const pressMentionRoutes_1 = __importDefault(require("./routes/pressMentionRoutes"));
 const db_1 = __importDefault(require("./config/db"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
@@ -42,6 +43,7 @@ app.use("/api/workshopPlanning", workshopPlanningRoutes_1.default);
 app.use("/api/articles", articleRoutes_1.default);
 app.use("/api/contacts", contactRoutes_1.default);
 app.use("/api/tags", tagRoutes_1.default);
+app.use("/api/pressMentions", pressMentionRoutes_1.default);
 db_1.default
     .sync()
     .then(() => {

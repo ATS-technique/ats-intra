@@ -1,15 +1,17 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
-import { StringifyOptions } from "querystring";
 
 interface ArticlesTagsAttributes {
   id_article: number;
   id_tag: number;
 }
 
-interface ArticleCreationAttributes {}
+interface ArticleTagsCreationAttributes {}
 
-class ArticleTags extends Model<ArticlesTagsAttributes, ArticleCreationAttributes> implements ArticlesTagsAttributes {
+class ArticleTags
+  extends Model<ArticlesTagsAttributes, ArticleTagsCreationAttributes>
+  implements ArticlesTagsAttributes
+{
   public id_article!: number;
   public id_tag!: number;
   public name!: string;

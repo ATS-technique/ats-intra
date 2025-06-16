@@ -9,6 +9,7 @@ import workshopPlanningRoutes from "./routes/workshopPlanningRoutes";
 import contactRoutes from "./routes/contactRoutes";
 import articleRoutes from "./routes/articleRoutes";
 import tagRoutes from "./routes/tagRoutes";
+import pressMentionRoutes from "./routes/pressMentionRoutes";
 import sequelize from "./config/db";
 
 const app = express();
@@ -17,6 +18,7 @@ const allowedOrigins = [
   process.env.FRONTEND_URL || "http://localhost:4000",
   "https://ats-serrurerie.com",
   "http://ats-mettalerie-serrurerie.com",
+  "http://127.0.0.1:5501",
 ];
 
 app.use(
@@ -42,6 +44,7 @@ app.use("/api/workshopPlanning", workshopPlanningRoutes);
 app.use("/api/articles", articleRoutes);
 app.use("/api/contacts", contactRoutes);
 app.use("/api/tags", tagRoutes);
+app.use("/api/pressMentions", pressMentionRoutes);
 sequelize
   .sync()
   .then(() => {

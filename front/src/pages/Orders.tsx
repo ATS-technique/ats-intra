@@ -175,8 +175,9 @@ export default function Orders() {
       addOrder.body.quote_number = orderFormState.quote_number;
       addOrder.body.reference = orderFormState.reference;
       addOrder.body.id_contact = orderFormState.id_contact;
-      console.log(addOrder);
+
       await FetchAPI(addOrder);
+
       setFormState(orderInitialFormState);
       setClientList([]);
       setContactList([]);

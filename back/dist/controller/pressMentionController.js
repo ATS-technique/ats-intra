@@ -21,12 +21,18 @@ const add = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         if (!req.file)
             throw new Error("Aucun fichier reçu");
-        const { article_name, media_name, article_url, link_text, image_path } = req.body;
+        const { article_name, media_name, article_url, description, date, link_text, image_path } = req.body;
         const folderPath = `pressMentions/${article_name}`;
         // Upload Cloudinary
         const image = yield (0, imageMangement_1.default)(req.file, folderPath);
         // Création de l'article avec l'URL Cloudinary
-        const newObject = yield pressMention_1.default.create({ article_name, media_name, article_url, link_text, image_path: image });
+        const newObject = yield pressMention_1.default.create({
+            article_name,
+            media_name,
+            article_url,
+            link_text,
+            image_path: image,
+        });
         const pressMention = newObject.dataValues;
         res.status(201).json({ pressMention });
     }
@@ -63,7 +69,7 @@ const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 exports.getAll = getAll;
 const editPressMention = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { id_press_mention, media_name, article_name, article_url, link_text, image_path } = req.body;
+        const { id_press_mention, media_name, article_name, article_url, description, date, link_text, image_path } = req.body;
         const pressMention = yield pressMention_1.default.findByPk(id_press_mention);
         if (!pressMention) {
             res.status(404).json({ message: "Article non trouvé" });
@@ -75,6 +81,8 @@ const editPressMention = (req, res) => __awaiter(void 0, void 0, void 0, functio
             pressMention.article_url = article_url;
             pressMention.link_text = link_text;
             pressMention.image_path = image_path;
+            pressMention.date = date;
+            pressMention.description = description;
             yield pressMention.save();
             res.status(200).json({ message: "Article modifié", pressMention });
         }

@@ -8,7 +8,6 @@ interface Action {
 export const FetchAPI = async (action: Action): Promise<object> => {
   const headers: Record<string, string> = {};
 
-  // N'ajoute pas de Content-Type si body est FormData
   const isFormData = action.body instanceof FormData;
 
   if (!isFormData) {

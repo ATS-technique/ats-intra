@@ -3,6 +3,7 @@ import { useState } from "react";
 import Tabs from "../components/Tabs/Tabs";
 import TabPanel from "../components/Tabs/TabPanel";
 import Articles from "../components/Website/Articles";
+import PressMentions from "../components/Website/pressMentions";
 import DisplayError from "../components/Error/DisplayError";
 
 const Dome = () => {
@@ -15,10 +16,16 @@ const Dome = () => {
         <DisplayError errorMessage={errorMessage} />
       ) : (
         <Tabs>
-          <TabPanel label="Articles">
+          {/* Conseils & Astuces */}
+          <TabPanel label=" Conseils & Astuces">
             <Articles setIsError={setIsError} setErrorMessage={setErrorMessage} />
           </TabPanel>
-          <TabPanel label="Galerie">Tab 2 Content</TabPanel>
+
+          {/* Ils parlent de nous */}
+          <TabPanel label="Ils parlent de nous">
+            <PressMentions setIsError={setIsError} setErrorMessage={setErrorMessage} />
+          </TabPanel>
+
           <TabPanel label="Employés">Tab 3 Content</TabPanel>
           <TabPanel label="Machines">Tab 4 Content</TabPanel>
         </Tabs>

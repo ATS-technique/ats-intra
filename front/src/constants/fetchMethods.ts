@@ -226,6 +226,20 @@ const payOrder = {
   },
 };
 
+const addPressMention = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.ADD_PRESS_MENTION,
+  body: {},
+};
+
+const getAllPressMentions = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.GET_PRESS_MENTIONS,
+  body: null,
+};
+
 export {
   UserList,
   Activate,
@@ -250,4 +264,6 @@ export {
   billOrder,
   payOrder,
   getTags,
+  addPressMention,
+  getAllPressMentions,
 };

@@ -35,7 +35,9 @@ class PressMention
 PressMention.init(
   {
     id_press_mention: {
+      primaryKey: true,
       type: DataTypes.INTEGER,
+      autoIncrement: true,
       allowNull: false,
     },
     media_name: {

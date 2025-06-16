@@ -8,7 +8,7 @@ dotenv.config();
 export const add = async (req: Request, res: Response): Promise<void> => {
   try {
     if (!req.file) throw new Error("Aucun fichier reçu");
-    const { article_name, media_name, article_url, description, date, link_text, image_path } = req.body;
+    const { article_name, media_name, article_url, description, date, link_text } = req.body;
 
     const folderPath = `pressMentions/${article_name}`;
 
@@ -21,6 +21,8 @@ export const add = async (req: Request, res: Response): Promise<void> => {
       media_name,
       article_url,
       link_text,
+      description,
+      date,
       image_path: image,
     });
 
@@ -49,9 +51,11 @@ export const getpressMention = async (req: Request, res: Response): Promise<void
 
 export const getAll = async (req: Request, res: Response): Promise<void> => {
   try {
-    const pressMentions = await PressMention.findAll();
-    res.status(200).json(pressMentions);
+    const pressMentions = await PressMention.findAll({
+      order: [["createdAt", "DESC"]], // Trie par le plus récent
+    }); res.status(200).json(pressMentions);
   } catch (error) {
+    console.error("❌ Erreur lors de la récupération des articles :", error);
     res.status(500).json({ error: (error as Error).message });
   }
 };

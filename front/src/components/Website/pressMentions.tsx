@@ -1,5 +1,5 @@
 // import MarkdownEditor from '@uiw/react-markdown-editor';
-import { useState, useEffect, useCallback, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Eye, X, Trash } from "lucide-react"; // Importing the X icon from react-icons
 import { FetchAPI } from "../methods/fetch";
 import {
@@ -14,17 +14,18 @@ import ImageUpload from "../inputs/ImageUpload";
 import { Column } from "../Table/types";
 import FormAction from "../inputs/FormAction";
 import ValidationPopUp from "../ValidationPopUp/ValidationPopUp";
+import { PressMention } from "../../constants/types";
 
-interface PressMention {
-  id_press_mention: number;
-  media_name: string;
-  article_name: string;
-  article_url: string;
-  description: string;
-  date: string;
-  link_text: string;
-  image_path: string;
-}
+const formInitialState = {
+  id_press_mention: 0,
+  media_name: "",
+  article_name: "",
+  article_url: "",
+  description: "",
+  date: "",
+  link_text: "",
+  image_path: "",
+};
 
 interface PressMentionProps {
   setIsError: React.Dispatch<React.SetStateAction<boolean>>;
@@ -73,20 +74,6 @@ export default function PressMentions({
     date: "",
     link_text: "",
   });
-
-  const formInitialState = useMemo(
-    () => ({
-      id_press_mention: 0,
-      media_name: "",
-      article_name: "",
-      article_url: "",
-      description: "",
-      date: "",
-      link_text: "",
-      image_path: "",
-    }),
-    [],
-  );
 
   const pressMentionsColumns: Column<PressMention>[] = [
     {
@@ -223,7 +210,7 @@ export default function PressMentions({
         console.log(articleToDelete);
       }
     },
-    [setIsError, setErrorMessage, setIsSuccess, setSuccessMessage, articleToDelete, formInitialState],
+    [setIsError, setErrorMessage, setIsSuccess, setSuccessMessage, articleToDelete],
   );
 
   const handleAddPressMention = useCallback(async () => {
@@ -328,7 +315,6 @@ export default function PressMentions({
     setIsSuccess,
     setSuccessMessage,
     fetchData,
-    formInitialState,
   ]);
 
   const handleChangeAddPressMention = (

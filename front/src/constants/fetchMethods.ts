@@ -32,6 +32,18 @@ const UpdateUser = {
   },
 };
 
+const Register = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.REGISTER,
+  body: {
+    name: "",
+    mail: "",
+    password: "",
+    is_active: true,
+  },
+};
+
 const updatePasswordForce = {
   method: "POST",
   Authorization: true,
@@ -286,4 +298,5 @@ export {
   getAllPressMentions,
   editPressMention,
   deletePressMention,
+  Register,
 };

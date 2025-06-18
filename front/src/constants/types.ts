@@ -53,3 +53,22 @@ export interface ContactType {
   mobile: string;
   landline: string;
 }
+
+export interface UserType {
+  id_user: number;
+  name: string;
+  mail: string; 
+  is_active: boolean;
+  createdAt: string;
+}
+
+export interface PressMention {
+  id_press_mention: number;
+  media_name: string;
+  article_name: string;
+  article_url: string;
+  description: string;
+  date: string;
+  link_text: string;
+  image_path: string;
+}

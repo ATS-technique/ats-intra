@@ -8,6 +8,7 @@ import { UpdateUserFields, UpdatePasswordForceFields } from "../../constants/for
 import Input from "../inputs/input";
 import FormAction from "../inputs/FormAction";
 import CancelAction from "../inputs/CancelAction";
+import { UserType } from "../../constants/types";
 
 const fields = UpdateUserFields;
 const fieldsState: { [key: string]: string } = {};
@@ -17,21 +18,13 @@ const fieldsPassword = UpdatePasswordForceFields;
 const fieldsPasswordState: { [key: string]: string } = {};
 fields.forEach((fieldPassword) => (fieldsPasswordState[fieldPassword.id] = ""));
 
-interface User {
-  id_user: number;
-  name: string;
-  mail: string;
-  createdAt: string;
-  is_active: boolean;
-}
-
 interface UsersItemProps {
-  users: User[];
+  users: UserType[];
 }
 
 const UserTable: React.FC<UsersItemProps> = ({ users }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+  const [selectedUser, setSelectedUser] = useState<UserType | null>(null);
   const [action, setAction] = useState<string | null>(null);
   const [isResponse, setIsResponse] = useState(false);
   const [response, setResponse] = useState("");
@@ -67,7 +60,7 @@ const UserTable: React.FC<UsersItemProps> = ({ users }) => {
     return format(date, "dd/MM/yyyy");
   };
 
-  const handleClick = (user: User, action: string) => {
+  const handleClick = (user: UserType, action: string) => {
     setSelectedUser(user);
     setAction(action);
     setIsModalOpen(true);

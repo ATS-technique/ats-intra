@@ -43,6 +43,8 @@ const pathAPI = {
   /* Press Mention Methods */
   ADD_PRESS_MENTION: BASE_API_URL + "pressMentions/addPressMention",
   GET_PRESS_MENTIONS: BASE_API_URL + "pressMentions/getAllPressMentions",
+  EDIT_PRESS_MENTION: BASE_API_URL + "pressMentions/editPressMention",
+  DELETE_PRESS_MENTION: BASE_API_URL + "pressMentions/deletePressMention",
 };
 
 export default pathAPI;

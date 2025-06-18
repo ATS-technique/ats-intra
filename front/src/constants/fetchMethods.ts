@@ -240,6 +240,24 @@ const getAllPressMentions = {
   body: null,
 };
 
+const editPressMention = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.EDIT_PRESS_MENTION,
+  body: {},
+};
+
+const deletePressMention = {
+  method: "POST",
+  Authorization: true,  
+  path: pathAPI.DELETE_PRESS_MENTION,
+  body: {
+    id_press_mention: 0,
+  },
+};
+
+
+
 export {
   UserList,
   Activate,
@@ -266,4 +284,6 @@ export {
   getTags,
   addPressMention,
   getAllPressMentions,
+  editPressMention,
+  deletePressMention,
 };

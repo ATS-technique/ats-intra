@@ -25,9 +25,11 @@ interface Tag {
 interface ArticlesProps {
   setIsError: React.Dispatch<React.SetStateAction<boolean>>;
   setErrorMessage: React.Dispatch<React.SetStateAction<string>>;
+  setIsSuccess: React.Dispatch<React.SetStateAction<boolean>>;
+  setSuccessMessage: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export default function Article({ setIsError, setErrorMessage }: ArticlesProps) {
+export default function Article({ setIsError, setErrorMessage, setIsSuccess, setSuccessMessage }: ArticlesProps) {
   const [articles, setArticles] = useState<Article[]>([]);
   const [selectedArticle, setSelectedArticle] = useState<Article>();
   const [newTitle, setNewTitle] = useState<string>("");
@@ -111,7 +113,9 @@ export default function Article({ setIsError, setErrorMessage }: ArticlesProps) 
         const jsonResponse = (await FetchAPI(request)) as { article: Article };
 
         setSelectedArticle(jsonResponse.article);
-        fetchData(); // Rafraîchir les données après l'ajout
+        fetchData();
+        setIsSuccess(true);
+        setSuccessMessage("Article ajouté avec succès");
       } else {
         setIsError(true);
         setErrorMessage("Veuillez remplir tous les champs");
@@ -121,7 +125,16 @@ export default function Article({ setIsError, setErrorMessage }: ArticlesProps) 
       console.error("Erreur lors de l'ajout de l'article :", error);
       setErrorMessage(error instanceof Error ? error.message : "Une erreur inconnue s'est produite.");
     }
-  }, [setErrorMessage, setIsError, newTitle, newArticleImage, newArticleDescription, fetchData]);
+  }, [
+    setErrorMessage,
+    setIsError,
+    setIsSuccess,
+    setSuccessMessage,
+    newTitle,
+    newArticleImage,
+    newArticleDescription,
+    fetchData,
+  ]);
 
   const onSelectTag = (e: MultiSelectChangeEvent) => {
     setSelectedTags(e.value);

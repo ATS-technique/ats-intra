@@ -53,8 +53,8 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
   try {
     const pressMentions = await PressMention.findAll({
       order: [["created_at", "DESC"]],
-    }); 
-        console.log("✅ Articles récupérés avec succès");
+    });
+    console.log("✅ Articles récupérés avec succès");
     res.status(200).json(pressMentions);
   } catch (error) {
     console.log("❌ Erreur lors de la récupération des articles :", error);
@@ -64,8 +64,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
 
 export const editPressMention = async (req: Request, res: Response): Promise<void> => {
   try {
-    const { id_press_mention, media_name, article_name, article_url, description, date, link_text, image_path } =
-      req.body;
+    const { id_press_mention, media_name, article_name, article_url, description, date, link_text } = req.body;
     const pressMention = await PressMention.findByPk(id_press_mention);
 
     if (!pressMention) {
@@ -76,14 +75,33 @@ export const editPressMention = async (req: Request, res: Response): Promise<voi
       pressMention.article_name = article_name;
       pressMention.article_url = article_url;
       pressMention.link_text = link_text;
-      pressMention.image_path = image_path;
       pressMention.date = date;
       pressMention.description = description;
+
+      if (req.file) {
+        const folderPath = `pressMentions/${article_name}`;
+        pressMention.image_path = await uploadImage(req.file, folderPath);
+      }
 
       await pressMention.save();
       res.status(200).json({ message: "Article modifié", pressMention });
     }
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });
+  }
+};
+
+export const deletePressMention = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { id_press_mention } = req.body;
+    const pressMention = await PressMention.findByPk(id_press_mention);
+    if (!pressMention) {
+      res.status(404).json({ message: "Article non trouvé" });
+      return;
+    }
+    await pressMention.destroy();
+    res.status(200).json({ message: "Article supprimé" });
+  } catch (error) {
+    res.status(500).json({ message: (error as Error).message });
   }
 };

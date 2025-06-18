@@ -12,5 +12,6 @@ const router = (0, express_1.Router)();
 router.post("/addPressMention", auth_1.default, upload.single("image"), pressMentionController_1.add);
 router.get("/getAllPressMentions", pressMentionController_1.getAll);
 router.get("/getPressMention/:id", auth_1.default, pressMentionController_1.getpressMention);
-router.post("/getMaxQuoteNumber", auth_1.default, pressMentionController_1.editPressMention);
+router.post("/editPressMention", auth_1.default, upload.single("image"), pressMentionController_1.editPressMention);
+router.post("/deletePressMention", auth_1.default, pressMentionController_1.deletePressMention);
 exports.default = router;

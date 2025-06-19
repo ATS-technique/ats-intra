@@ -26,7 +26,7 @@ PressMention.init({
         allowNull: false,
     },
     description: {
-        type: sequelize_1.DataTypes.STRING,
+        type: sequelize_1.DataTypes.TEXT,
         allowNull: true,
     },
     date: {

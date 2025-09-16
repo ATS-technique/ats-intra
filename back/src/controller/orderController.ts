@@ -78,6 +78,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
         };
       }),
     );
+    
     const ordersWithUserNames = await Promise.all(
       ordersWithClientNames.map(async (orderNames) => {
         const user = await getUserName(orderNames.id_user);

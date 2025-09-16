@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Tabs from "../components/Tabs/Tabs";
 import TabPanel from "../components/Tabs/TabPanel";
-import Articles from "../components/Website/Articles";
+import Projects from "../components/Website/Projects";
 import PressMentions from "../components/Website/pressMentions";
 import DisplayError from "../components/Error/DisplayError";
 import DisplaySuccess from "../components/Error/DisplaySuccess";
@@ -18,8 +18,8 @@ const Dome = () => {
       {isSuccess ? <DisplaySuccess message={successMessage} onClose={() => setIsSuccess(false)} /> : null}
       <Tabs>
         {/* Conseils & Astuces */}
-        <TabPanel label=" Conseils & Astuces">
-          <Articles
+        <TabPanel label="Projects">
+          <Projects
             setIsError={setIsError}
             setIsSuccess={setIsSuccess}
             setSuccessMessage={setSuccessMessage}
@@ -36,9 +36,6 @@ const Dome = () => {
             setErrorMessage={setErrorMessage}
           />
         </TabPanel>
-
-        <TabPanel label="Employés">Tab 3 Content</TabPanel>
-        <TabPanel label="Machines">Tab 4 Content</TabPanel>
       </Tabs>
     </div>
   );

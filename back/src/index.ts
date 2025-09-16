@@ -10,6 +10,9 @@ import contactRoutes from "./routes/contactRoutes";
 import articleRoutes from "./routes/articleRoutes";
 import tagRoutes from "./routes/tagRoutes";
 import pressMentionRoutes from "./routes/pressMentionRoutes";
+import projectRoutes from "./routes/projectRoutes";
+import projectTypeRoutes from "./routes/projectTypeRoutes";
+import projectImageRoutes from "./routes/projectImageRoutes";
 import sequelize from "./config/db";
 
 const app = express();
@@ -45,6 +48,10 @@ app.use("/api/articles", articleRoutes);
 app.use("/api/contacts", contactRoutes);
 app.use("/api/tags", tagRoutes);
 app.use("/api/pressMentions", pressMentionRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/projectTypes", projectTypeRoutes);
+app.use("/api/projectImages", projectImageRoutes);
+
 sequelize
   .sync()
   .then(() => {

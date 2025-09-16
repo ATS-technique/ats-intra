@@ -45,6 +45,25 @@ const pathAPI = {
   GET_PRESS_MENTIONS: BASE_API_URL + "pressMentions/getAllPressMentions",
   EDIT_PRESS_MENTION: BASE_API_URL + "pressMentions/editPressMention",
   DELETE_PRESS_MENTION: BASE_API_URL + "pressMentions/deletePressMention",
+
+  /* Project Methods */
+  PROJECTS_LIST: BASE_API_URL + "projects/getAll",
+  PROJECTS_ADD: BASE_API_URL + "projects/addProject",
+  PROJECTS_GET_ONE: BASE_API_URL + "projects/getOne",
+  PROJECTS_GET_PROJECT_BY_TYPE: BASE_API_URL + "projects/getProjectByType/",
+  PROJECTS_UPDATE: BASE_API_URL + "projects/updateProject",
+
+  /* Project Type Methods */
+  PROJECT_TYPES_LIST: BASE_API_URL + "projectTypes/getAll",
+  PROJECT_TYPES_ADD: BASE_API_URL + "projectTypes/addProjectImage",
+  PROJECT_TYPES_GET_ONE: BASE_API_URL + "projectTypes/getOne",
+
+  /* Project Image Methods */
+  PROJECT_IMAGES_LIST: BASE_API_URL + "projectImages/getAll",
+  PROJECT_IMAGES_ADD: BASE_API_URL + "projectImages/addProjectImage",
+  PROJECT_IMAGES_ADD_MANY: BASE_API_URL + "projectImages/addProjectImages",
+  PROJECT_IMAGES_GET_ONE: BASE_API_URL + "projectImages/getProjectImagebyPk/",
+  PROJECT_IMAGES_DELETE: BASE_API_URL + "projectImages/deleteProjectImage",
 };
 
 export default pathAPI;

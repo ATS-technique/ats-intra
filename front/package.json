@@ -26,7 +26,8 @@
     "react-dom": "^18.3.1",
     "react-markdown": "^10.0.0",
     "react-router-dom": "^6.25.0",
-    "react-select": "^5.10.1"
+    "react-select": "^5.10.1",
+    "react-tailwindcss-select": "^1.8.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",

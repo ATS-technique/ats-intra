@@ -41,7 +41,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
         type="file"
         accept="image/*"
         onChange={handleFileChange}
-        className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+        className="block appearance-none w-full text-sm text-neutral-900 border border-neutral-300 rounded-lg cursor-pointer bg-neutral-50 dark:text-neutral-400 focus:outline-none dark:bg-neutral-700 dark:border-neutral-600 dark:placeholder-neutral-400"
       />
 
       {preview && (
@@ -56,7 +56,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({ onImageUpload }) => {
         </div>
       )}
 
-      {file && <p className="mt-2 text-sm text-gray-600">{file.name}</p>}
+      {file && <p className="mt-2 text-sm text-neutral-600">{file.name}</p>}
     </div>
   );
 };

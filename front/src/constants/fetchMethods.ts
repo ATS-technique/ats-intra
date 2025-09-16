@@ -1,27 +1,27 @@
 import pathAPI from "../pathAPI";
 
-const UserList = {
+export const UserList = {
   method: "GET",
   Authorization: true,
   path: pathAPI.USER_LIST,
   body: null,
 };
 
-const Activate = {
+export const Activate = {
   method: "POST",
   Authorization: true,
   path: pathAPI.ACTIVATE,
   body: { id: "" },
 };
 
-const Deactivate = {
+export const Deactivate = {
   method: "POST",
   Authorization: true,
   path: pathAPI.DEACTIVATE,
   body: { id: "" },
 };
 
-const UpdateUser = {
+export const UpdateUser = {
   method: "POST",
   Authorization: true,
   path: pathAPI.UPDATE_USER,
@@ -32,7 +32,7 @@ const UpdateUser = {
   },
 };
 
-const Register = {
+export const Register = {
   method: "POST",
   Authorization: true,
   path: pathAPI.REGISTER,
@@ -44,7 +44,7 @@ const Register = {
   },
 };
 
-const updatePasswordForce = {
+export const updatePasswordForce = {
   method: "POST",
   Authorization: true,
   path: pathAPI.FORCE_PASSWORD_UPDATE,
@@ -54,7 +54,7 @@ const updatePasswordForce = {
   },
 };
 
-const updateScreenMode = {
+export const updateScreenMode = {
   method: "POST",
   Authorization: true,
   path: pathAPI.SCREEN_MODE_UPDATE,
@@ -64,14 +64,14 @@ const updateScreenMode = {
   },
 };
 
-const getAllClients = {
+export const getAllClients = {
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_ALL_CLIENTS,
   body: null,
 };
 
-const addClient = {
+export const addClient = {
   method: "POST",
   Authorization: true,
   path: pathAPI.ADD_CLIENT,
@@ -87,7 +87,7 @@ const addClient = {
   },
 };
 
-const editClientById = {
+export const editClientById = {
   method: "POST",
   Authorization: true,
   path: pathAPI.EDIT_CLIENT_FIELD,
@@ -104,14 +104,14 @@ const editClientById = {
   },
 };
 
-const getAllOrders = {
+export const getAllOrders = {
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_ALL_ORDERS,
   body: null,
 };
 
-const editOrderById = {
+export const editOrderById = {
   method: "POST",
   Authorization: true,
   path: pathAPI.EDIT_ORDER_FIELD,
@@ -124,56 +124,56 @@ const editOrderById = {
   },
 };
 
-const getOrderById = (id_client: string) => ({
+export const getOrderById = (id_client: string) => ({
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_ORDER_BY_ID + id_client,
   body: null,
 });
 
-const getProductsByOrder = (id_client: string) => ({
+export const getProductsByOrder = (id_client: string) => ({
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_PRODUCTS_BY_ORDER + id_client,
   body: null,
 });
 
-const getClientContactsById = (id_client: number) => ({
+export const getClientContactsById = (id_client: number) => ({
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_CLIENT_CONTACTS + id_client,
   body: null,
 });
 
-const getArticles = {
+export const getArticles = {
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_ARTICLES,
   body: null,
 };
 
-const getTags = {
+export const getTags = {
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_TAGS,
   body: null,
 };
 
-const addArticle = {
+export const addArticle = {
   method: "POST",
   Authorization: true,
   path: pathAPI.ADD_ARTICLE,
   body: {},
 };
 
-const getMaxQuoteNumber = {
+export const getMaxQuoteNumber = {
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_MAX_QUOYE_NUMBER,
   body: null,
 };
 
-const addOrder = {
+export const addOrder = {
   method: "POST",
   Authorization: true,
   path: pathAPI.ADD_ORDER,
@@ -192,7 +192,7 @@ const addOrder = {
   },
 };
 
-const addContact = {
+export const addContact = {
   method: "POST",
   Authorization: true,
   path: pathAPI.ADD_CONTACT,
@@ -205,7 +205,7 @@ const addContact = {
   },
 };
 
-const validateOrder = {
+export const validateOrder = {
   method: "POST",
   Authorization: true,
   path: pathAPI.VALIDATE_ORDER,
@@ -215,7 +215,7 @@ const validateOrder = {
   },
 };
 
-const billOrder = {
+export const billOrder = {
   method: "POST",
   Authorization: true,
   path: pathAPI.VALIDATE_ORDER,
@@ -226,7 +226,7 @@ const billOrder = {
   },
 };
 
-const payOrder = {
+export const payOrder = {
   method: "POST",
   Authorization: true,
   path: pathAPI.VALIDATE_ORDER,
@@ -238,28 +238,28 @@ const payOrder = {
   },
 };
 
-const addPressMention = {
+export const addPressMention = {
   method: "POST",
   Authorization: true,
   path: pathAPI.ADD_PRESS_MENTION,
   body: {},
 };
 
-const getAllPressMentions = {
+export const getAllPressMentions = {
   method: "GET",
   Authorization: true,
   path: pathAPI.GET_PRESS_MENTIONS,
   body: null,
 };
 
-const editPressMention = {
+export const editPressMention = {
   method: "POST",
   Authorization: true,
   path: pathAPI.EDIT_PRESS_MENTION,
   body: {},
 };
 
-const deletePressMention = {
+export const deletePressMention = {
   method: "POST",
   Authorization: true,  
   path: pathAPI.DELETE_PRESS_MENTION,
@@ -268,35 +268,107 @@ const deletePressMention = {
   },
 };
 
+export const getAllProjects = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECTS_LIST,
+  body: null,
+};  
 
+export const addProject = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.PROJECTS_ADD,
+  body: {},
+};
 
-export {
-  UserList,
-  Activate,
-  Deactivate,
-  UpdateUser,
-  updatePasswordForce,
-  updateScreenMode,
-  getAllClients,
-  addClient,
-  editClientById,
-  getAllOrders,
-  editOrderById,
-  getOrderById,
-  getProductsByOrder,
-  getArticles,
-  addArticle,
-  getMaxQuoteNumber,
-  addOrder,
-  getClientContactsById,
-  addContact,
-  validateOrder,
-  billOrder,
-  payOrder,
-  getTags,
-  addPressMention,
-  getAllPressMentions,
-  editPressMention,
-  deletePressMention,
-  Register,
+export const getOneProject = {  
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECTS_GET_ONE,
+  body: null,
+};
+
+export const getProjectByType = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECTS_GET_PROJECT_BY_TYPE,
+  body: null,
+};
+
+export const getAllProjectTypes = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECT_TYPES_LIST,
+  body: null,
+};
+
+export const addProjectType = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.PROJECT_TYPES_ADD,
+  body: {
+    name: "",
+  },
+};
+
+export const getOneProjectType = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECT_TYPES_GET_ONE,
+  body: null,
+};
+
+export const getAllProjectImages = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECT_IMAGES_LIST,
+  body: null,
+};
+
+export const addProjectImage = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.PROJECT_IMAGES_ADD,
+  body: {
+    id_project: 0,
+    path: "",
+  },
+};
+
+export const addManyProjectImages = {
+  method: "POST",
+  Authorization: true,
+  path: pathAPI.PROJECT_IMAGES_ADD_MANY,
+  body: {
+    id_project: 0,
+  },
+};
+
+export const getOneProjectImage = {
+  method: "GET",
+  Authorization: true,
+  path: pathAPI.PROJECT_IMAGES_GET_ONE,
+  body: null,
+};
+
+export const deleteProjectImage = {
+  method: "DELETE",
+  Authorization: true,
+  path: pathAPI.PROJECT_IMAGES_DELETE,
+  body: {
+    id_project_image: 0,
+  },
+};
+
+export const editProjectById = {
+  method: "PUT",
+  Authorization: true,
+  path: pathAPI.PROJECTS_UPDATE,
+  body: {
+    id_project: 0,
+    name: "",
+    description: "",
+    cover_image: "",
+  },
 };

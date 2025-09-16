@@ -72,3 +72,25 @@ export interface PressMention {
   link_text: string;
   image_path: string;
 }
+
+export interface ProjectType {
+  id_project_type: number;
+  name: string;
+}
+
+export interface ProjectImage {
+  id_project_image: number;
+  id_project: number;
+  path: string;
+}
+
+export interface Project {
+  id_project: number;
+  id_project_type: number;
+  name: string;
+  description: string;
+  cover_image: string;
+  project_images?: ProjectImage[];
+  project_type?: string;
+}
+

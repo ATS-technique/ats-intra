@@ -29,7 +29,7 @@ Service.init(
       primaryKey: true,
     },
     id_service_type: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     name: {
@@ -37,7 +37,7 @@ Service.init(
       allowNull: false,
     },
     unit_cost: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     unit: {

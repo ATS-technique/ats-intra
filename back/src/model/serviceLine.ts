@@ -1,6 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
-import { NUMBER } from "sequelize";
+import { INTEGER } from "sequelize";
 
 interface ServiceLineAttributes {
   id_service_line: number;
@@ -28,15 +28,15 @@ ServiceLine.init(
       primaryKey: true,
     },
     id_product: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     id_service: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     quantity: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },

@@ -22,15 +22,9 @@ function Layout({ children }: PublicLayoutProps) {
           />
           <NavbarItem
             icon={<Calendar size={20} />}
-            text="Planning Atelier"
-            path={MyPaths.PLANNING_ATELIER}
-            active={location.pathname === MyPaths.PLANNING_ATELIER}
-          />
-          <NavbarItem
-            icon={<Calendar size={20} />}
-            text="Planning Pose"
-            path={MyPaths.PLANNING_POSE}
-            active={location.pathname === MyPaths.PLANNING_POSE}
+            text="Planning"
+            path={MyPaths.PLANNING}
+            active={location.pathname === MyPaths.PLANNING}
           />
           <NavbarItem
             icon={<Lock size={20} />}

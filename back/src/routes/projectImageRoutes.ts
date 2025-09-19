@@ -18,8 +18,8 @@ router.post("/addProjectImage", auth, upload.single("image"), add);
 
 router.post("/addProjectImages", auth, upload.array("images", 12), addMany);
 
-router.get("/getAll", auth, getAll);
-router.get("/getProjectImagebyPk/:id_project_image", auth, getProjectImagebyPk);
+router.get("/getAll", getAll);
+router.get("/getImagesByProject/:id_project_image", auth, getProjectImagebyPk);
 router.delete("/deleteProjectImage", auth, deleteProjectImageById);
 
 export default router;

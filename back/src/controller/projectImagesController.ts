@@ -68,7 +68,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
 export const getProjectImagebyPk = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id_project_image } = req.body;
-    const projectImage = await ProjectImage.findByPk(id_project_image);
+    const projectImage = await ProjectImage.findOne({ where: { id_project_image } });
     if (!projectImage) {
       res.status(404).json({ message: "Image de projet inconnue" });
       return;

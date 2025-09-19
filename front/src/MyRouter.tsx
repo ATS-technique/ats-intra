@@ -7,8 +7,7 @@ import Admin from "./pages/Admin";
 import Clients from "./pages/Clients";
 import PrivateRoute from "./components/PrivateRoute";
 import { AuthProvider } from "./contexts/AuthContext";
-import PlanningAtelier from "./pages/PlanningAtelier";
-import PlanningPose from "./pages/PlanningPose";
+import PlanningAtelier from "./pages/Planning";
 import Orders from "./pages/Orders";
 import Order from "./pages/Order";
 import ManageWebsite from "./pages/ManageWebsite";
@@ -34,21 +33,11 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: MyPaths.PLANNING_ATELIER,
+    path: MyPaths.PLANNING,
     element: (
       <PrivateRoute>
         <Layout>
           <PlanningAtelier />
-        </Layout>
-      </PrivateRoute>
-    ),
-  },
-  {
-    path: MyPaths.PLANNING_POSE,
-    element: (
-      <PrivateRoute>
-        <Layout>
-          <PlanningPose />
         </Layout>
       </PrivateRoute>
     ),

@@ -1,7 +1,6 @@
 enum MyPaths {
   ACCUEIL = "/accueil",
-  PLANNING_ATELIER = "/PlanningAtelier",
-  PLANNING_POSE = "/PlanningPose",
+  PLANNING = "/Planning",
   LOGIN = "/login",
   ADMIN = "/admin",
   CLIENT = "/client",

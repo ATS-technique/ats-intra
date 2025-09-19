@@ -54,7 +54,7 @@ const pathAPI = {
   PROJECTS_UPDATE: BASE_API_URL + "projects/updateProject",
 
   /* Project Type Methods */
-  PROJECT_TYPES_LIST: BASE_API_URL + "projectTypes/getAll",
+  PROJECT_TYPES_LIST: BASE_API_URL + "projectTypes/getAllProjectTypes",
   PROJECT_TYPES_ADD: BASE_API_URL + "projectTypes/addProjectImage",
   PROJECT_TYPES_GET_ONE: BASE_API_URL + "projectTypes/getOne",
 

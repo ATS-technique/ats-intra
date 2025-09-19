@@ -10,7 +10,7 @@ dotenv.config();
 
 export const add = async (req: Request, res: Response): Promise<void> => {
     try {
-        if (!req.file) throw new Error("Aucun fichier reçu");
+        if (!req.files) throw new Error("Aucun fichier reçu");
         const { id_project_type, name, description } = req.body;
 
         const folderPath = `projects/${id_project_type}`;
@@ -37,6 +37,7 @@ export const add = async (req: Request, res: Response): Promise<void> => {
 
         res.status(201).json({ message: "Projet ajouté", project });
     } catch (error) {
+        console.log("🅰️ Error: ", error);
         res.status(500).json({ error: (error as Error).message });
     }
 };
@@ -123,17 +124,27 @@ export const getProjectbyPk = async (req: Request, res: Response): Promise<void>
 };
 
 export const getProjectByType = async (req: Request, res: Response): Promise<void> => {
-    try {
-        const { id_project_type } = req.params;
-        const project = await Project.findAll({ where: { id_project_type } });
-        if (!project) {
-            res.status(404).json({ message: "Projet inconnu" });
-            return;
-        }
-        res.status(200).json({ project });
-    } catch (error) {
-        res.status(500).json({ error: (error as Error).message });
+  try {
+    const { id_project_type } = req.params;
+    const projects = await Project.findAll({ where: { id_project_type } });
+
+    if (projects.length === 0) {
+      res.status(404).json({ message: "Aucun projet pour ce type" });
+      return;
     }
+
+    const projectsWithImages = await Promise.all(
+      projects.map(async (project) => {
+        const plain = project.get({ plain: true }); // important
+        const images = await getProjectImageByIdProject(plain.id_project);
+        return { ...plain, images: images ?? [] };
+      })
+    );
+    console.log(projectsWithImages[1].images);
+    res.status(200).json(projectsWithImages);
+  } catch (error) {
+    res.status(500).json({ error: (error as Error).message });
+  }
 };
 
 export const getProjectsDetails = async (projects: ProjectAttributes[]): Promise<Project[]> => {
@@ -159,4 +170,16 @@ export const getProjectsDetails = async (projects: ProjectAttributes[]): Promise
     );
 
     return projectsWithTypeAndImages as [];
+};
+
+export const getLatestCoverImageByProjectType = async (id_project_type: number): Promise<string | null> => {
+    const project = await Project.findOne({
+        where: { id_project_type },
+        order: [['createdAt', 'DESC']], // ou ['created_at', 'DESC'] selon ton champ
+    });
+    if (!project) {
+        return null;
+    }
+
+    return project.cover_image? project.cover_image : null;
 };

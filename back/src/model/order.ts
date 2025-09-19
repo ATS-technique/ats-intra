@@ -71,11 +71,11 @@ Order.init(
       primaryKey: true,
     },
     id_client: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     quote_number: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       unique: true,
     },
@@ -84,7 +84,7 @@ Order.init(
       allowNull: false,
     },
     price: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true,
       defaultValue: 0,
     },
@@ -123,12 +123,12 @@ Order.init(
       defaultValue: null,
     },
     id_contact: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
       defaultValue: 0,
     },
     deposit_rate: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       defaultValue: 0,
     },
     deposit_paid: {
@@ -144,7 +144,7 @@ Order.init(
       allowNull: true,
     },
     id_user: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
   },

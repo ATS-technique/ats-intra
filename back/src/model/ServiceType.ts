@@ -1,6 +1,6 @@
 import { DataTypes, Model, Optional } from "sequelize";
 import sequelize from "../config/db";
-import { NUMBER } from "sequelize";
+import { INTEGER } from "sequelize";
 
 interface ServiceTypeAttributes {
   id_service_type: number;

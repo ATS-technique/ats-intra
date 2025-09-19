@@ -58,7 +58,7 @@ Client.init(
       allowNull: true,
     },
     post_code: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
     city: {

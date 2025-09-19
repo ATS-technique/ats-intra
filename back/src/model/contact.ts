@@ -32,7 +32,7 @@ Contact.init(
       primaryKey: true,
     },
     id_client: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     name: {

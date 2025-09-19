@@ -31,7 +31,7 @@ Product.init(
       primaryKey: true,
     },
     id_order: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     designation: {
@@ -39,11 +39,11 @@ Product.init(
       allowNull: false,
     },
     quantity: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     id_status: {
-      type: DataTypes.NUMBER,
+      type: DataTypes.INTEGER,
       defaultValue: true,
     },
     unit: {

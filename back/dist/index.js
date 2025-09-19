@@ -15,6 +15,9 @@ const contactRoutes_1 = __importDefault(require("./routes/contactRoutes"));
 const articleRoutes_1 = __importDefault(require("./routes/articleRoutes"));
 const tagRoutes_1 = __importDefault(require("./routes/tagRoutes"));
 const pressMentionRoutes_1 = __importDefault(require("./routes/pressMentionRoutes"));
+const projectRoutes_1 = __importDefault(require("./routes/projectRoutes"));
+const projectTypeRoutes_1 = __importDefault(require("./routes/projectTypeRoutes"));
+const projectImageRoutes_1 = __importDefault(require("./routes/projectImageRoutes"));
 const db_1 = __importDefault(require("./config/db"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
@@ -45,6 +48,9 @@ app.use("/api/articles", articleRoutes_1.default);
 app.use("/api/contacts", contactRoutes_1.default);
 app.use("/api/tags", tagRoutes_1.default);
 app.use("/api/pressMentions", pressMentionRoutes_1.default);
+app.use("/api/projects", projectRoutes_1.default);
+app.use("/api/projectTypes", projectTypeRoutes_1.default);
+app.use("/api/projectImages", projectImageRoutes_1.default);
 db_1.default
     .sync()
     .then(() => {

@@ -33,7 +33,7 @@ const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const projectTypes = yield projectType_1.default.findAll();
         if (projectTypes.length === 0) {
-            res.status(404).json({ message: "Aucun type de projet à ce jour" });
+            res.status(200).json([]);
             return;
         }
         res.status(200).json(projectTypes);

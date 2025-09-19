@@ -34,7 +34,7 @@ Client.init({
         allowNull: true,
     },
     post_code: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: true,
     },
     city: {

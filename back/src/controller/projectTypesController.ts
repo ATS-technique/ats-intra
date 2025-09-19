@@ -28,7 +28,7 @@ export const getAll = async (req: Request, res: Response): Promise<void> => {
   try {
     const projectTypes = await ProjectType.findAll();
     if (projectTypes.length === 0) {
-      res.status(404).json({ message: "Aucun type de projet à ce jour" });
+      res.status(200).json([]);
       return;
     }
     res.status(200).json( projectTypes );

@@ -12,10 +12,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProjectTypebyPk = exports.getAll = exports.add = void 0;
+exports.getProjectTypeWithCoverImage = exports.getProjectTypebyPk = exports.getAll = exports.add = void 0;
 exports.getProjectTypeById = getProjectTypeById;
 const projectType_1 = __importDefault(require("../model/projectType"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const projectController_1 = require("./projectController");
 dotenv_1.default.config();
 const add = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -38,6 +39,7 @@ const getAll = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(200).json(projectTypes);
     }
     catch (error) {
+        console.log("❌ Erreur lors de la récupération des types de projet :", error);
         res.status(500).json({ error: error.message });
     }
 });
@@ -50,7 +52,7 @@ const getProjectTypebyPk = (req, res) => __awaiter(void 0, void 0, void 0, funct
             res.status(404).json({ message: "Type de projet inconnu" });
             return;
         }
-        res.status(200).json({ projectType });
+        res.status(200).json(projectType);
     }
     catch (error) {
         res.status(500).json({ error: error.message });
@@ -63,3 +65,27 @@ function getProjectTypeById(id_project_type) {
         return projectType ? projectType.name : null;
     });
 }
+const getProjectTypeWithCoverImage = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const projectTypes = yield projectType_1.default.findAll();
+        if (projectTypes.length === 0) {
+            res.status(404).json({ message: "Aucun type de projet à ce jour" });
+            return;
+        }
+        const slideData = yield Promise.all(projectTypes.map((projectType) => __awaiter(void 0, void 0, void 0, function* () {
+            const coverImage = yield (0, projectController_1.getLatestCoverImageByProjectType)(projectType.id_project_type);
+            if (!coverImage)
+                return null; // on neutralise si pas d'image
+            return {
+                image: coverImage,
+                title: projectType.name,
+                id_project_type: projectType.id_project_type,
+            };
+        }))).then(arr => arr.filter((x) => x !== null)); // on filtre les nulls
+        res.status(200).json(slideData);
+    }
+    catch (error) {
+        res.status(500).json({ error: error.message });
+    }
+});
+exports.getProjectTypeWithCoverImage = getProjectTypeWithCoverImage;

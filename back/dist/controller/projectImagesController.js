@@ -75,7 +75,7 @@ exports.getAll = getAll;
 const getProjectImagebyPk = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id_project_image } = req.body;
-        const projectImage = yield projectImages_1.default.findByPk(id_project_image);
+        const projectImage = yield projectImages_1.default.findOne({ where: { id_project_image } });
         if (!projectImage) {
             res.status(404).json({ message: "Image de projet inconnue" });
             return;

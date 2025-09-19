@@ -14,7 +14,7 @@ Service.init({
         primaryKey: true,
     },
     id_service_type: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
     name: {
@@ -22,7 +22,7 @@ Service.init({
         allowNull: false,
     },
     unit_cost: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
     unit: {

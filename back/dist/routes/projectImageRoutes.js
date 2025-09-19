@@ -20,7 +20,7 @@ const upload = (0, multer_1.default)({
 });
 router.post("/addProjectImage", auth_1.default, upload.single("image"), projectImagesController_1.add);
 router.post("/addProjectImages", auth_1.default, upload.array("images", 12), projectImagesController_1.addMany);
-router.get("/getAll", auth_1.default, projectImagesController_1.getAll);
-router.get("/getProjectImagebyPk/:id_project_image", auth_1.default, projectImagesController_1.getProjectImagebyPk);
+router.get("/getAll", projectImagesController_1.getAll);
+router.get("/getImagesByProject/:id_project_image", auth_1.default, projectImagesController_1.getProjectImagebyPk);
 router.delete("/deleteProjectImage", auth_1.default, projectImagesController_1.deleteProjectImageById);
 exports.default = router;

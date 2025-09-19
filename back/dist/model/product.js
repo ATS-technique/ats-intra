@@ -14,7 +14,7 @@ Product.init({
         primaryKey: true,
     },
     id_order: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
     designation: {
@@ -22,11 +22,11 @@ Product.init({
         allowNull: false,
     },
     quantity: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
     id_status: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         defaultValue: true,
     },
     unit: {

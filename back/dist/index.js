@@ -26,6 +26,7 @@ const allowedOrigins = [
     "https://ats-serrurerie.com",
     "http://ats-metallerie-serrurerie.fr",
     "http://127.0.0.1:5501",
+    "http://localhost:8888",
 ];
 app.use((0, cors_1.default)({
     origin: (origin, callback) => {

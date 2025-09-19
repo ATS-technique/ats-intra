@@ -14,11 +14,11 @@ Order.init({
         primaryKey: true,
     },
     id_client: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
     quote_number: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
         unique: true,
     },
@@ -27,7 +27,7 @@ Order.init({
         allowNull: false,
     },
     price: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: true,
         defaultValue: 0,
     },
@@ -66,12 +66,12 @@ Order.init({
         defaultValue: null,
     },
     id_contact: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
     },
     deposit_rate: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         defaultValue: 0,
     },
     deposit_paid: {
@@ -87,7 +87,7 @@ Order.init({
         allowNull: true,
     },
     id_user: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
 }, {

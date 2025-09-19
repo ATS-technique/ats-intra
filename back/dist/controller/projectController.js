@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getProjectsDetails = exports.getProjectByType = exports.getProjectbyPk = exports.update = exports.getAll = exports.add = void 0;
+exports.getLatestCoverImageByProjectType = exports.getProjectsDetails = exports.getProjectByType = exports.getProjectbyPk = exports.update = exports.getAll = exports.add = void 0;
 const project_1 = __importDefault(require("../model/project"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const projectTypesController_1 = require("./projectTypesController");
@@ -21,7 +21,7 @@ const imageMangement_1 = __importDefault(require("../function/imageMangement"));
 dotenv_1.default.config();
 const add = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        if (!req.file)
+        if (!req.files)
             throw new Error("Aucun fichier reçu");
         const { id_project_type, name, description } = req.body;
         const folderPath = `projects/${id_project_type}`;
@@ -40,6 +40,7 @@ const add = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         res.status(201).json({ message: "Projet ajouté", project });
     }
     catch (error) {
+        console.log("🅰️ Error: ", error);
         res.status(500).json({ error: error.message });
     }
 });
@@ -114,12 +115,18 @@ exports.getProjectbyPk = getProjectbyPk;
 const getProjectByType = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { id_project_type } = req.params;
-        const project = yield project_1.default.findAll({ where: { id_project_type } });
-        if (!project) {
-            res.status(404).json({ message: "Projet inconnu" });
+        const projects = yield project_1.default.findAll({ where: { id_project_type } });
+        if (projects.length === 0) {
+            res.status(404).json({ message: "Aucun projet pour ce type" });
             return;
         }
-        res.status(200).json({ project });
+        const projectsWithImages = yield Promise.all(projects.map((project) => __awaiter(void 0, void 0, void 0, function* () {
+            const plain = project.get({ plain: true }); // important
+            const images = yield (0, projectImagesController_1.getProjectImageByIdProject)(plain.id_project);
+            return Object.assign(Object.assign({}, plain), { images: images !== null && images !== void 0 ? images : [] });
+        })));
+        console.log(projectsWithImages[1].images);
+        res.status(200).json(projectsWithImages);
     }
     catch (error) {
         res.status(500).json({ error: error.message });
@@ -139,3 +146,14 @@ const getProjectsDetails = (projects) => __awaiter(void 0, void 0, void 0, funct
     return projectsWithTypeAndImages;
 });
 exports.getProjectsDetails = getProjectsDetails;
+const getLatestCoverImageByProjectType = (id_project_type) => __awaiter(void 0, void 0, void 0, function* () {
+    const project = yield project_1.default.findOne({
+        where: { id_project_type },
+        order: [['createdAt', 'DESC']], // ou ['created_at', 'DESC'] selon ton champ
+    });
+    if (!project) {
+        return null;
+    }
+    return project.cover_image ? project.cover_image : null;
+});
+exports.getLatestCoverImageByProjectType = getLatestCoverImageByProjectType;

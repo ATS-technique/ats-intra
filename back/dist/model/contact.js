@@ -14,7 +14,7 @@ Contact.init({
         primaryKey: true,
     },
     id_client: {
-        type: sequelize_1.DataTypes.NUMBER,
+        type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
     },
     name: {

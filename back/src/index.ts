@@ -32,10 +32,9 @@ const normalize = (u: string): string => {
 };
 
 const rawAllowed = [
-  process.env.FRONTEND_URL || "http://localhost:4000",
+  process.env.FRONTEND_URL,
   process.env.WEBSITE_URL || "https://ats-serrurerie.com",
   process.env.WEBSITE_BIS_URL || "https://ats-metallerie-serrurerie.fr",
-  "http://127.0.0.1:5501",
   "http://localhost:8888",
   "https://ats-serrurerie.com",
   "https://www.ats-serrurerie.com",

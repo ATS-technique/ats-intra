@@ -140,7 +140,7 @@ export const getProjectByType = async (req: Request, res: Response): Promise<voi
         return { ...plain, images: images ?? [] };
       })
     );
-    console.log(projectsWithImages[1].images);
+    
     res.status(200).json(projectsWithImages);
   } catch (error) {
     res.status(500).json({ error: (error as Error).message });

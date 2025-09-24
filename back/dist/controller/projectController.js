@@ -125,7 +125,6 @@ const getProjectByType = (req, res) => __awaiter(void 0, void 0, void 0, functio
             const images = yield (0, projectImagesController_1.getProjectImageByIdProject)(plain.id_project);
             return Object.assign(Object.assign({}, plain), { images: images !== null && images !== void 0 ? images : [] });
         })));
-        console.log(projectsWithImages[1].images);
         res.status(200).json(projectsWithImages);
     }
     catch (error) {

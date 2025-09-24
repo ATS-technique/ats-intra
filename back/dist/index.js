@@ -21,25 +21,50 @@ const projectImageRoutes_1 = __importDefault(require("./routes/projectImageRoute
 const db_1 = __importDefault(require("./config/db"));
 const app = (0, express_1.default)();
 const PORT = process.env.PORT || 3000;
-const allowedOrigins = [
-    process.env.FRONTEND_URL || "http://localhost:4000",
+const normalize = (u) => {
+    try {
+        const url = new URL(u);
+        return `${url.protocol}//${url.hostname}${url.port ? `:${url.port}` : ""}`;
+    }
+    catch (_a) {
+        return u.replace(/\/$/, "");
+    }
+};
+const rawAllowed = [
+    process.env.FRONTEND_URL,
     process.env.WEBSITE_URL || "https://ats-serrurerie.com",
-    process.env.WEBSITE_BIS_URL || "http://ats-metallerie-serrurerie.fr",
-    "http://127.0.0.1:5501",
+    process.env.WEBSITE_BIS_URL || "https://ats-metallerie-serrurerie.fr",
     "http://localhost:8888",
-];
-app.use((0, cors_1.default)({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
+    "https://ats-serrurerie.com",
+    "https://www.ats-serrurerie.com",
+].filter(Boolean);
+const ALLOWED = new Set(rawAllowed.map(normalize));
+const corsOptions = {
+    origin(origin, callback) {
+        // Requêtes sans Origin (curl / serveur->serveur)
+        if (!origin)
+            return callback(null, true);
+        const o = normalize(origin);
+        if (ALLOWED.has(o))
+            return callback(null, true);
+        // (facultatif) logique sous-domaines
+        try {
+            const u = new URL(origin);
+            if (u.protocol === "https:" &&
+                (u.hostname === "ats-serrurerie.com" || u.hostname.endsWith(".ats-serrurerie.com"))) {
+                return callback(null, true);
+            }
         }
-        else {
-            console.log("Not allowed by CORS : " + origin);
-            callback(new Error("Not allowed by CORS : " + origin));
-        }
+        catch (_a) { }
+        return callback(new Error("Not allowed by CORS : " + origin));
     },
     credentials: true,
-}));
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+};
+app.use((req, res, next) => { res.header("Vary", "Origin"); next(); });
+app.use((0, cors_1.default)(corsOptions));
+app.options("*", (0, cors_1.default)(corsOptions));
 app.use(body_parser_1.default.json());
 app.use("/api/users", userRoutes_1.default);
 app.use("/api/clients", clientRoutes_1.default);
